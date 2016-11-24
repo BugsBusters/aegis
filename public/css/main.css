@@ -5077,7 +5077,7 @@ a, button {
 }
 
 a, a:focus, a:hover {
-    color: #0082c6;
+    color: #af7180;
     text-decoration: none;
     cursor: pointer
 }
@@ -14724,8 +14724,11 @@ html {
     color: #99AD5B
 }
 
-.giulia-text-purple {
-    text-overline-color: red;
+.required{
+    float: left;
+    width: 16.666667%;
+    shape-margin: 20px;
+    vertical-align: middle;
 }
 
 .theme-picton-blue-white-ebony .side-menu .side-menu-list a:hover, .theme-picton-blue-white-ebony .side-menu .side-menu-list > li.opened, .theme-picton-blue-white-ebony .side-menu .side-menu-list > li > span:hover {

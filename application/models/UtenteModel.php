@@ -66,8 +66,8 @@ class Application_Model_UtenteModel
     public function updateUtente($dati, $username){
         $data = array(
             'username'      => $dati['username'],
-            'nome'      => $dati['Nome'],
-            'cognome'      => $dati['Cognome'],
+            'nome'      => $dati['nome'],
+            'cognome'      => $dati['cognome'],
             'password'      => $dati['password'],
         );
         $where = $this->_tabella->getAdapter()->quoteInto('username = ?', $username);

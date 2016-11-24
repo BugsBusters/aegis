@@ -25,8 +25,9 @@ class Application_Model_NotificaModel
         return $this->_tabella->delete("idnotifica = ".$id);
     }
 
-    public function getNotifiche(){
+    public function getNotifichebyIdUtente($idUtente){
         $sql = $this->_tabella->select()
+            ->where('idutente = ?', $idUtente)
             ->order('data desc')
             ->order('ora desc');
         return $this->_tabella->fetchAll($sql);

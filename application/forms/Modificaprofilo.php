@@ -19,7 +19,7 @@ class Application_Form_Modificaprofilo extends App_Form_Abstract
             'filters' => array('StringTrim'),
             'required' => true,
             'label' => 'Nome',
-            'class' => 'black-text',
+            'class' => 'form-control',
             'value' => $this->_nome,
 
 
@@ -29,7 +29,7 @@ class Application_Form_Modificaprofilo extends App_Form_Abstract
             'filters' => array('StringTrim'),
             'required' => true,
             'label' => 'Cognome',
-            'class' => 'black-text',
+            'class' => 'form-control',
             'value' => $this->_cognome,
 
 
@@ -43,7 +43,7 @@ class Application_Form_Modificaprofilo extends App_Form_Abstract
             ),
             'required' => true,
             'label' => 'Username',
-            'class' => 'black-text',
+            'class' => 'form-control',
             'value' => $this->_username,
 
 
@@ -57,13 +57,13 @@ class Application_Form_Modificaprofilo extends App_Form_Abstract
             'required' => true,
             'placeholder' => 'Inserisci la password',
             'label' => 'Password',
-            'class' => 'black-text',
+            'class' => 'form-control',
             'value' => $this->_password,
         ));
 
 
         $this->addElement('submit', 'modifica', array(
-            'class' => 'btn waves-yellow green',
+            'class' => 'btn btn-rounded dropdown-toggle',
         ));
 
         $this->setDecorators(array(
