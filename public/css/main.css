@@ -14724,6 +14724,10 @@ html {
     color: #99AD5B
 }
 
+.giulia-text-purple {
+    text-overline-color: red;
+}
+
 .theme-picton-blue-white-ebony .side-menu .side-menu-list a:hover, .theme-picton-blue-white-ebony .side-menu .side-menu-list > li.opened, .theme-picton-blue-white-ebony .side-menu .side-menu-list > li > span:hover {
     background-color: #374248
 }

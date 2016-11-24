@@ -2,6 +2,11 @@
 
 class Application_Form_Modificaprofilo extends App_Form_Abstract
 {
+    protected $_nome;
+    protected $_cognome;
+    protected $_username;
+    protected $_password;
+
 
 
     public function init()
@@ -10,45 +15,50 @@ class Application_Form_Modificaprofilo extends App_Form_Abstract
         $this->setName('modificaprofilo'); //setta name e id del form
 
 
-
         $this->addElement('text', 'nome', array(
-            'filters'    => array('StringTrim'),
-            'required'   => true,
-            'label'=> 'Nome',
-            'class' =>'black-text',
+            'filters' => array('StringTrim'),
+            'required' => true,
+            'label' => 'Nome',
+            'class' => 'black-text',
+            'value' => $this->_nome,
+
 
         ));
 
         $this->addElement('text', 'cognome', array(
-            'filters'    => array('StringTrim'),
-            'required'   => true,
-            'label'=> 'Cognome',
-            'class' =>'black-text',
+            'filters' => array('StringTrim'),
+            'required' => true,
+            'label' => 'Cognome',
+            'class' => 'black-text',
+            'value' => $this->_cognome,
+
 
         ));
-        
+
 
         $this->addElement('text', 'username', array(
-            'filters'    => array('StringTrim'),
+            'filters' => array('StringTrim'),
             'validators' => array(
                 array('StringLength', true, array(2, 64))
             ),
-            'required'         => true,
-            'label'      => 'Username',
-            'class' =>'black-text',
+            'required' => true,
+            'label' => 'Username',
+            'class' => 'black-text',
+            'value' => $this->_username,
+
 
         ));
 
         $this->addElement('password', 'password', array(
-            'filters'    => array('StringTrim'),
+            'filters' => array('StringTrim'),
             'validators' => array(
                 array('StringLength', true, array(2, 64))
             ),
-            'required'         => true,
+            'required' => true,
             'placeholder' => 'Inserisci la password',
-            'label'      => 'Password',
-            'class' =>'black-text',
-            'value'=>$this->_password,
+            'label' => 'Password',
+            'class' => 'black-text',
+            'value' => $this->_password,
         ));
 
 
@@ -62,8 +72,20 @@ class Application_Form_Modificaprofilo extends App_Form_Abstract
             array('Description', array('placement' => 'prepend', 'class' => 'formerror')),
             'Form'
         ));
+    }
 
         //include_once ('Lingua.php');
+
+        public function populate($dati)
+    {
+        $this->nome->setValue($dati['nome']);
+        $this->cognome->setValue($dati['cognome']);
+        $this->username->setValue($dati['username']);
+        $this->password->renderPassword = true;
+        $this->password->setValue($dati['password']);
+        
+
     }
+
 
 }
