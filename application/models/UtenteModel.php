@@ -41,7 +41,15 @@ class Application_Model_UtenteModel
 
         return $this->_tabella->fetchAll($sql);
     }
-    
+
+    public function getUtenteById($id){
+        $sql = $this->_tabella->select()
+            ->where("idutente = ?", $id);
+
+
+        return $this->_tabella->fetchAll($sql);
+
+    }
     
 }
 
