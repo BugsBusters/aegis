@@ -7333,11 +7333,11 @@ hr.margin-4 {
 
 .dropdown-item.current, .dropdown-item:hover {
     background: 0 0;
-    color: #00a8ff
+    color: #af7180
 }
 
 .dropdown-item.current .font-icon, .dropdown-item:hover .font-icon {
-    color: #00a8ff
+    color: #af7180
 }
 
 .dropdown-item.no-nowrap {

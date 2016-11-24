@@ -6,7 +6,7 @@ class LoginController extends Zend_Controller_Action
     public function init()
     {
         $this->_authService = new Application_Service_Auth();
-        $this->_helper->layout->setLayout('layout');
+        $this->_helper->layout->setLayout('layout1');
         $this->view->loginForm = $this->getLoginForm();
         
     }

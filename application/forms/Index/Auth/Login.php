@@ -26,7 +26,7 @@ class Application_Form_Index_Auth_Login extends Zend_Form
 
         $this->addElement('submit', 'Accedi', array(
             'label'    => 'Login',
-            'class' => 'btn red white-text',
+            'class' => 'btn btn-rounded dropdown-toggle',
         ));
     }
 
