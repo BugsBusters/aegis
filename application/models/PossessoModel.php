@@ -35,4 +35,28 @@ class Application_Model_PossessoModel
         return $this->delete("idpossesso =" . $id);
 
     }
+
+    public function getcomponentemalfunz()
+    {
+        $s = 0;
+        $sql = $this->_tabella->select()
+            ->where("stato = ?", $s);
+
+
+        $comp = $this->_tabella->fetchAll($sql);
+
+        $nodimodel = new Application_Model_NodoModel();
+        $appezzamentimodel = new Application_Model_AppezzamentoModel();
+        $ulivetimodel = new Application_Model_UlivetoModel();
+        $componentimodel = new Application_Model_ComponenteModel();
+
+
+        $nodi = $nodimodel->getNodi()->toArray();
+        $appez = $appezzamentimodel->getAppezzamenti()->toArray();
+        $uliv = $ulivetimodel->getuliveti();
+        //$comp = $componentimodel->getComponenteById($comp->idcomponente);
+
+
+
+    }
 }

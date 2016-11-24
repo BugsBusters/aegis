@@ -5,7 +5,7 @@ class AdminController extends Zend_Controller_Action
 
     public function init()
     {
-        $this->_helper->layout->setLayout('layout');
+        /* Initialize action controller here */
     }
 
     public function indexAction()
@@ -24,6 +24,14 @@ class AdminController extends Zend_Controller_Action
 
         $this->view->arraynotifiche = $arraynotifiche;
         $this->view->utente = $utente;
+
+    }
+
+    public function gestionemalfunzionamentiAction()
+    {
+        $possessoModel = new Application_Model_CheckcomponentiModel();
+        $this->view->componentimalfunz = $possessoModel->getCheck()->toArray();
+
 
     }
 

@@ -110,7 +110,7 @@
                             <img src="img/avatar-2-64.png" alt="">
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
-                            <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-user"></span>Modifica
+                            <a class="dropdown-item" href=""><span class="font-icon glyphicon glyphicon-user"></span>Modifica
                                 Profilo</a>
                             <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-cog"></span>Impostazioni</a>
                             <div class="dropdown-divider"></div>
@@ -178,7 +178,13 @@
         </li>
 
         <li class="giulia-pink">
-            <a href="scheduler.html">
+            <a href="<?php
+            echo $this->url(
+                array(
+                    'controller' => 'admin',
+                    'action' => 'gestionemalfunzionamenti',
+                ), null, true
+            ) ?>">
                 <i class="font-icon font-icon-help"></i>
                 <span class="lbl">Gestione malfunziamenti</span>
             </a>

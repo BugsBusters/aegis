@@ -24,5 +24,16 @@ class Application_Model_AppezzamentoModel
         return $this->_tabella->delete("idappezzamento = " . $id);
     }
 
+    public function getAppezzamenti(){
+        $sql = $this->_tabella->select();
+
+        return $this->_tabella->fetchAll($sql);
+    }
+    public function getAppezzamentoById($idappezz){
+        $sql = $this->_tabella->select()
+            ->where("idappezzamento = ?", $idappezz);
+
+        return $this->_tabella->fetchAll($sql);
+    }
 }
 

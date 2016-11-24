@@ -10,11 +10,16 @@ class Application_Model_UlivetoModel
         return $this->_tabella = new Application_Model_DbTable_Uliveto();
     }
 
+    public function getUliveti(){
+        $sql= $this->_tabella->select();
+        return $this->_tabella->fetchAll($sql);
+    }
+
     public function getulivetobyid($id)
     {
-        $tabella = new Application_Model_UlivetoModel();
-        $array = $this->fetchAll($tabella->select()->where("iduliveto =" . $id));
-        return $array;
+
+        $sql= $this->_tabella->select()->where("iduliveto = ?", $id);
+        return $this->_tabella->fetchAll($sql);
     }
 
     public function inserisciuliveto($dati)
