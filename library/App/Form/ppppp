@@ -1,0 +1,25 @@
+
+<form enctype="application/x-www-form-urlencoded" method="post" action="/ProveDecorators/public/index/verificaform"><dl class="zend_form">
+
+    <tr>
+        <td id="testo-label">&#160;</td>
+        <td class="element">
+
+        <input type="text" name="testo" id="testo" value="immetti numeri">
+        </td>
+
+        <td class="errors">
+            <ul class="errors">
+                <li>'wefhwedhjsdfhjsdhjsd' must contain only digits
+                </li>
+            </ul>
+        </td>
+
+    </tr>
+
+
+    <dt id="invia-label">&#160;</dt><dd id="invia-element">
+    <input type="submit" name="invia" id="invia" value="invia"></dd></dl>
+
+
+</form>
