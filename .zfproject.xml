@@ -21,9 +21,12 @@
         <controllerFile controllerName="User">
           <actionMethod actionName="index"/>
           <actionMethod actionName="notifiche"/>
+          <actionMethod actionName="modificaprofilo"/>
         </controllerFile>
       </controllersDirectory>
-      <formsDirectory enabled="false"/>
+      <formsDirectory enabled="false">
+        <formFile formName="Modificaprofilo"/>
+      </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
         <dbTableDirectory>
@@ -66,6 +69,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="User">
             <viewScriptFile forActionName="notifiche"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="modificaprofilo"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
