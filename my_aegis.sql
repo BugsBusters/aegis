@@ -3,12 +3,10 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Nov 24, 2016 alle 11:22
+-- Creato il: Nov 24, 2016 alle 20:16
 -- Versione del server: 10.1.16-MariaDB
 -- Versione PHP: 5.6.24
 
-create database 'my_aegis`;
-USE 'my_aegis`
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -31,7 +29,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `appezzamento` (
   `idappezzamento` int(3) NOT NULL,
   `iduliveto` int(3) NOT NULL,
-  `note` text COLLATE utf8_bin NOT NULL
+  `note` text COLLATE utf8_bin NOT NULL,
+  `mappa` varchar(200) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -58,6 +57,41 @@ CREATE TABLE `nodo` (
   `gprs` tinyint(1) NOT NULL,
   `idappezzamento` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `notifica`
+--
+
+CREATE TABLE `notifica` (
+  `idnotifica` int(3) NOT NULL,
+  `titolo` varchar(50) COLLATE utf8_bin NOT NULL,
+  `descrizione` varchar(100) COLLATE utf8_bin NOT NULL,
+  `idutente` int(3) NOT NULL,
+  `data` date NOT NULL,
+  `ora` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `parametri`
+--
+
+CREATE TABLE `parametri` (
+  `idparametro` int(11) NOT NULL,
+  `descrizione` varchar(50) COLLATE utf8_bin NOT NULL,
+  `valore` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dump dei dati per la tabella `parametri`
+--
+
+INSERT INTO `parametri` (`idparametro`, `descrizione`, `valore`) VALUES
+(1, 'temperatura', 40),
+(2, 'umidita', 100);
 
 -- --------------------------------------------------------
 
@@ -138,6 +172,14 @@ CREATE TABLE `utente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
+-- Dump dei dati per la tabella `utente`
+--
+
+INSERT INTO `utente` (`idutente`, `nome`, `cognome`, `ruolo`, `username`, `password`) VALUES
+(2, '', '', 'user', 'user', 'user'),
+(3, '', '', 'admin', 'admin', 'admin');
+
+--
 -- Indici per le tabelle scaricate
 --
 
@@ -160,6 +202,19 @@ ALTER TABLE `componente`
 ALTER TABLE `nodo`
   ADD PRIMARY KEY (`idnodo`),
   ADD KEY `idappezzamento` (`idappezzamento`);
+
+--
+-- Indici per le tabelle `notifica`
+--
+ALTER TABLE `notifica`
+  ADD PRIMARY KEY (`idnotifica`),
+  ADD KEY `idutente` (`idutente`);
+
+--
+-- Indici per le tabelle `parametri`
+--
+ALTER TABLE `parametri`
+  ADD PRIMARY KEY (`idparametro`);
 
 --
 -- Indici per le tabelle `possesso`
@@ -222,6 +277,16 @@ ALTER TABLE `componente`
 ALTER TABLE `nodo`
   MODIFY `idnodo` int(3) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT per la tabella `notifica`
+--
+ALTER TABLE `notifica`
+  MODIFY `idnotifica` int(3) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT per la tabella `parametri`
+--
+ALTER TABLE `parametri`
+  MODIFY `idparametro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT per la tabella `possesso`
 --
 ALTER TABLE `possesso`
@@ -250,7 +315,7 @@ ALTER TABLE `umidita`
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `idutente` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `idutente` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Limiti per le tabelle scaricate
 --
@@ -266,6 +331,12 @@ ALTER TABLE `appezzamento`
 --
 ALTER TABLE `nodo`
   ADD CONSTRAINT `esistenza_appezzamento` FOREIGN KEY (`idappezzamento`) REFERENCES `appezzamento` (`idappezzamento`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limiti per la tabella `notifica`
+--
+ALTER TABLE `notifica`
+  ADD CONSTRAINT `esistenza_utente_notifica` FOREIGN KEY (`idutente`) REFERENCES `utente` (`idutente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `temperatura`
