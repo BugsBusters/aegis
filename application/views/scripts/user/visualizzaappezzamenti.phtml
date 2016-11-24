@@ -1,0 +1,18 @@
+<div class="row">
+    <?php foreach ($this->elencoAppezzamenti as $appezzamenti): ?>
+        <div class="col-md-6" style="background-color:white">
+            <?php echo $appezzamenti->nome; ?>
+            <br>
+            <a href="<?php echo $this->url(array(
+                "controller" => "user",
+                "action" => "visualizzanodi",
+                "uliveto" => $appezzamenti->iduliveto,
+                "appezzamento" => $appezzamenti->idappezzamento
+            ),
+                "default", true);
+            ?>">
+                <button class="btn btn-primary">Visualizza Appezzamenti</button>
+            </a>
+        </div>
+    <?php endforeach; ?>
+</div>

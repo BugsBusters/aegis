@@ -38,6 +38,23 @@
 
 </div><!--.row-->
 <div class="row">
+    <?php foreach ($this->elencoOliveti as $oliveto): ?>
+        <div class="col-md-6" style="background-color:white">
+            <?php echo $oliveto->descrizione; ?>
+            <br>
+            <a href="<?php echo $this->url(array(
+                "controller" => "user",
+                "action" => "visualizzaappezzamenti",
+                "uliveto" => $oliveto->iduliveto,
+            ),
+                "default", true);
+            ?>">
+                <button class="btn btn-primary">Visualizza Appezzamenti</button>
+            </a>
+        </div>
+    <?php endforeach; ?>
+
+    <!-- GESTIONE GRAFICI
     <div class="col-md-12">
         <div class="card" id="graphs">
             <div class="card-block">
@@ -68,6 +85,7 @@
             </div>
         </div>
     </div>
+    -->
 
 </div>
 

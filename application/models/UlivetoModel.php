@@ -12,9 +12,11 @@ class Application_Model_UlivetoModel
 
     public function getulivetobyid($id)
     {
-        $tabella = new Application_Model_UlivetoModel();
-        $array = $this->fetchAll($tabella->select()->where("iduliveto =" . $id));
-        return $array;
+       return $this->_tabella->find($id);
+    }
+
+    public function getUliveti(){
+        return $this->_tabella->fetchAll();
     }
 
     public function inserisciuliveto($dati)
