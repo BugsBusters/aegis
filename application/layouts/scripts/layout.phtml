@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="<?php echo $this->baseUrl("css/lib/font-awesome/font-awesome.min.css"); ?>">
     <link rel="stylesheet" href="<?php echo $this->baseUrl("css/lib/bootstrap/bootstrap.min.css"); ?>">
     <link rel="stylesheet" href="<?php echo $this->baseUrl("css/main.css"); ?>">
+    <link rel="stylesheet" href="<?php echo $this->baseUrl("css/select2.min.css"); ?>">
 </head>
 <body class="with-side-menu control-panel control-panel-compact">
 
@@ -199,6 +200,9 @@
 <script src="<?php echo $this->baseUrl("js/lib/bootstrap/bootstrap.min.js"); ?>"></script>
 <script src="<?php echo $this->baseUrl("js/plugins.js"); ?>"></script>
 <script src="<?php echo $this->baseUrl("js/lib/fancybox/jquery.fancybox.pack.js"); ?>"></script>
+<script src="<?php echo $this->baseUrl("vendor/flot/jquery.flot.js"); ?>"></script>
+<script src="<?php echo $this->baseUrl("vendor/flot/flot-time-plugin.js"); ?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <script>
     $(function () {
         $(".fancybox").fancybox({
@@ -209,6 +213,125 @@
     });
 </script>
 <script src="<?php echo $this->baseUrl("js/app.js"); ?>"></script>
+
+<?php if ($this->currentPage == "index"): ?>
+<script>
+    $(document).ready(function () {
+       graficoTemperatura()
+        graficoMosche()
+        graficoUmidita()
+    });
+
+
+
+
+    function graficoTemperatura() {
+        //dichiaro il carattere " come pattern, e re come espressione regolare. lo userò per rimpiazzarla globalmente
+
+
+        //data = [[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26]];
+        data = <?php echo $this->datitemperatura; ?>;
+        // data = [[1, 3], [2, 14.01], [3.5, 3.14]];
+        s = [{
+            data: data,
+            color: '#f0c54c'
+        }]
+
+
+
+        $.plot($("#temperatura"), s, {
+            grid: {borderWidth: 1, color: "rgba(0,0,0,0.02)"},
+            yaxis: {
+                minTickSize: 1,
+                tickDecimals: 0,
+                mode: "categories",
+                tickLength: 0,
+                axisLabelUseCanvas: !0,
+                axisLabelFontSizePixels: 12,
+                axisLabelFontFamily: "inherit"
+            },
+            xaxis: {
+                minTickSize: [1, "day"],
+                mode: "time",
+                timeformat: "%d/%m/%y"
+            }
+        });
+
+
+    }
+
+    function graficoUmidita() {
+        //dichiaro il carattere " come pattern, e re come espressione regolare. lo userò per rimpiazzarla globalmente
+
+
+        //data = [[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26]];
+        data = <?php echo $this->datiUmidita; ?>;
+        // data = [[1, 3], [2, 14.01], [3.5, 3.14]];
+        s = [{
+            data: data,
+            color: '#f0c54c'
+        }]
+
+
+
+        $.plot($("#umidita"), s, {
+            grid: {borderWidth: 1, color: "rgba(0,0,0,0.02)"},
+            yaxis: {
+                minTickSize: 1,
+                tickDecimals: 0,
+                mode: "categories",
+                tickLength: 0,
+                axisLabelUseCanvas: !0,
+                axisLabelFontSizePixels: 12,
+                axisLabelFontFamily: "inherit"
+            },
+            xaxis: {
+                minTickSize: [1, "day"],
+                mode: "time",
+                timeformat: "%d/%m/%y"
+            }
+        });
+
+
+    }
+
+    function graficoMosche() {
+        //dichiaro il carattere " come pattern, e re come espressione regolare. lo userò per rimpiazzarla globalmente
+
+
+        //data = [[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26]];
+        data = <?php echo $this->datiConta; ?>;
+        // data = [[1, 3], [2, 14.01], [3.5, 3.14]];
+        s = [{
+            data: data,
+            color: '#f0c54c'
+        }]
+
+
+
+        $.plot($("#mosche"), s, {
+            grid: {borderWidth: 1, color: "rgba(0,0,0,0.02)"},
+            yaxis: {
+                minTickSize: 1,
+                tickDecimals: 0,
+                mode: "categories",
+                tickLength: 0,
+                axisLabelUseCanvas: !0,
+                axisLabelFontSizePixels: 12,
+                axisLabelFontFamily: "inherit"
+            },
+            xaxis: {
+                minTickSize: [1, "day"],
+                mode: "time",
+                timeformat: "%d/%m/%y"
+            }
+        });
+
+
+    }
+    (jQuery);
+<?php endif; ?>
+</script>
 </body>
 
 </html>
