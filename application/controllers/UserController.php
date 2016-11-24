@@ -80,7 +80,7 @@ class UserController extends Zend_Controller_Action
             }
             $authservice = new Application_Service_Auth();
             $authservice->getAuth()->getIdentity()->current()->username = $datiform['username'];
-            print_r($datiform);die;
+            
             $utentimodel->updateUtente($datiform, $username);
             $this->getHelper('Redirector')->gotoSimple('index','user',$module=null);
 
