@@ -1,6 +1,6 @@
 <?php
 
-class Application_Model_ParametriModel
+class Application_Model_ParametriModel extends Zend_Db_Table_Abstract
 {
 
     protected $_tabella;
@@ -9,20 +9,38 @@ class Application_Model_ParametriModel
     {
         return $this->_tabella = new Application_Model_DbTable_Parametri();
     }
+
+    public function getparam()
+    {
+        $sql = $this->_tabella->select();
+        return $this->_tabella->fetchAll($sql);
+    }
     
     public function inserisci($dati){
         
         return $this->_tabella->insert($dati);
     }
     
-    public function modifica($dati,$id){
+    public function modificaById($dati,$id){
         
-        return $this->_tabella->update($dati,"idparametri = ".$id);
+        return $this->_tabella->update($dati,"idparametro = ".$id);
+    }
+
+    public function modifica($dati){
+        return $this->_tabella->update($dati);
+    }
+
+    public function modificaargomento($dati, $id){
+        return $this->_tabella->update($dati, "argomento =".$id);
     }
     
     public function elimina($id){
         
-        return $this->_tabella->delete("idparametri = ".$id);
+        return $this->_tabella->delete("idparametro = ".$id);
+    }
+
+    public function eliminatutto(){
+        return $this->_tabella->delete("1=1");
     }
 
 
