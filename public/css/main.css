@@ -5077,7 +5077,7 @@ a, button {
 }
 
 a, a:focus, a:hover {
-    color: #0082c6;
+    color: #af7180;
     text-decoration: none;
     cursor: pointer
 }
@@ -7333,11 +7333,11 @@ hr.margin-4 {
 
 .dropdown-item.current, .dropdown-item:hover {
     background: 0 0;
-    color: #00a8ff
+    color: #af7180
 }
 
 .dropdown-item.current .font-icon, .dropdown-item:hover .font-icon {
-    color: #00a8ff
+    color: #af7180
 }
 
 .dropdown-item.no-nowrap {
@@ -12213,7 +12213,7 @@ body {
 }
 
 .site-header .dropdown-menu-notif .dropdown-menu-notif-item {
-    padding: 8px 15px 8px 57px;
+    padding: 8px 15px 8px 15px;
     position: relative
 }
 
@@ -14722,6 +14722,13 @@ html {
 
 .giulia-green .font-icon {
     color: #99AD5B
+}
+
+.required{
+    float: left;
+    width: 16.666667%;
+    shape-margin: 20px;
+    vertical-align: middle;
 }
 
 .theme-picton-blue-white-ebony .side-menu .side-menu-list a:hover, .theme-picton-blue-white-ebony .side-menu .side-menu-list > li.opened, .theme-picton-blue-white-ebony .side-menu .side-menu-list > li > span:hover {

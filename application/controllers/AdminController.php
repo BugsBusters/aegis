@@ -4,12 +4,27 @@ class AdminController extends Zend_Controller_Action
 {
     protected $_formappezzamenti;
 
+    protected $user = null;
+
+    protected $_authService = null;
+
+    protected $elenconotifiche = null;
+
     public function init()
     {
-        $this->_formappezzamenti = new Application_Form_Gestioneappezzamentiform();
-        $this->view->formappezzamenti = $this->_formappezzamenti;
+        $this->view->formappezzamenti = $this->getFormAppezzamenti();
+        $this->_authService = new Application_Service_Auth();
 
-        /* Initialize action controller here */
+        $this->_helper->layout->setLayout('layout');
+        $this->user = $this->_authService->getAuth()->getIdentity()->current();
+        $notificheModel = new Application_Model_NotificaModel();
+
+        $this->elenconotifiche = $notificheModel->getNotifichebyIdUtente($this->user->idutente);
+        $this->view->assign("elenconotifiche",$this->elenconotifiche);
+        $this->view->assign('role',$this->user->ruolo);
+
+        $this->view->modificaprofiloform = $this->getModificaProfiloForm();
+        $this->_helper->layout->setLayout('layout');
     }
 
     public function indexAction()
@@ -23,11 +38,10 @@ class AdminController extends Zend_Controller_Action
         $arraynotifiche = $notificheModel->getNotifiche();
         $idutente = $arraynotifiche[0]->idutente;
 
-        $utenteModel = new Application_Model_UtenteModel();
-        $utente = $utenteModel->getUtenteById($idutente)[0]->username;
+        $arraynotifiche = $notificheModel->getNotifichebyIdUtente($this->user->idutente);
 
         $this->view->arraynotifiche = $arraynotifiche;
-        $this->view->utente = $utente;
+        $this->view->utente = $this->user->username;
 
     }
 
@@ -37,6 +51,41 @@ class AdminController extends Zend_Controller_Action
         $this->view->componentimalfunz = $possessoModel->getCheck()->toArray();
 
 
+    }
+
+    public function getFormAppezzamenti(){
+        $urlHelper = $this->_helper->getHelper('url');
+        $this->_formappezzamenti = new Application_Form_Gestioneappezzamentiform();
+
+
+        $this->_formappezzamenti->setAction($urlHelper->url(array(
+            'controller' => 'admin',
+            'action' => 'verificaaggiuntaappezzamento'),
+            'default'));
+
+        return $this->_formappezzamenti;
+    }
+
+    public function verificaaggiuntaappezzamentoAction()
+    {
+        $request = $this->getRequest();
+        if (!$request->isPost()) {
+            return $this->_helper->redirector('gestioneappezzamenti');
+        }
+        $form = $this->_formappezzamenti;
+        if (!$form->isValid($request->getPost())) {
+            $form->setDescription('Attenzione: alcuni dati inseriti sono errati.');
+            return $this->render('gestioneappezzamenti');
+        } else {
+            $datiform = $form->getValues();
+
+            $appezzamentoModel = new Application_Model_AppezzamentoModel();
+
+
+            $appezzamentoModel->inserisci($datiform);
+            $this->getHelper('Redirector')->gotoSimple('gestioneappezzamenti', 'admin', $module = null);
+
+        }
     }
 
     public function gestioneappezzamentiAction()
@@ -58,13 +107,29 @@ class AdminController extends Zend_Controller_Action
 
     }
 
+    public function getModificaProfiloForm() {
+        $this->modificaprofiloform = new Application_Form_Modificaprofilo();
+        $this->view->modificaform = $this->modificaprofiloform;
 
+        $form = $this->modificaprofiloform;
+        $usermodel=new Application_Model_UtenteModel();
+        $dati=$usermodel->getUserByUser($this->user->username)->toArray();
+        $form->populate($dati[0]);
+
+        $urlHelper = $this->_helper->getHelper('url');
+
+        $this->view->modificaform->setAction($urlHelper->url(array(
+            'controller' => 'user',
+            'action' => 'verificamodificaprofilo'),
+            'default'));
+    }
+/*
     public function aggiungiulivetoAction()
     {
         $this->_ulivetoform->setAction(Zend_Controller_Front::getInstance()->getBaseUrl() . '/admin/validateuliveto');
         $this->view->assign('aggiungiform', $this->_ulivetoform);
     }
-
+*/
     public function validateulivetoAction()
     {
         $request = $this->getRequest();
@@ -90,7 +155,7 @@ class AdminController extends Zend_Controller_Action
 
     }
 
-    public function eliminaulivetoAction()
+    public function eliminaappezzamentoAction()
     {
         $id = $this->getParam('id');
         if (!is_null($id)) {
@@ -98,6 +163,39 @@ class AdminController extends Zend_Controller_Action
             $appezzamentomodel->elimina($id);
         }
         $this->getHelper('Redirector')->gotoSimple('gestioneappezzamenti', 'admin', $module = null);
+    }
+    public function modificaprofiloAction()
+    {
+        // action body
+    }
+
+
+    public function verificamodificaprofiloAction(){
+        $request = $this->getRequest();
+        if (!$request->isPost()) {
+            return $this->_helper->redirector('modificaprofilo');
+        }
+        $form = $this->modificaprofiloform;
+        if (!$form->isValid($request->getPost())) {
+            $form->setDescription('Attenzione: alcuni dati inseriti sono errati.');
+            return $this->render('modificaprofilo');
+        } else {
+            $datiform=$form->getValues();
+            $username = $this->user->username;
+            $utentimodel=new Application_Model_UtenteModel();
+
+            if($utentimodel->existUsername($datiform['username']) && $datiform['username'] != $username) //controllo se l'username inserito esiste già nel db
+            {
+                $form->setDescription('Attenzione: l\'username che hai scelto non è disponibile.');
+                return $this->getActionController()->render('modificadatiutente');
+            }
+            $authservice = new Application_Service_Auth();
+            $authservice->getAuth()->getIdentity()->current()->username = $datiform['username'];
+
+            $utentimodel->updateUtente($datiform, $username);
+            $this->getHelper('Redirector')->gotoSimple('index','user',$module=null);
+
+        }
     }
 
 

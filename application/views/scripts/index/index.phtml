@@ -1,5 +1,639 @@
-<a href="<?php echo $this->url(array('controller' => 'login',
-    'action' => 'index'),
-    'default'
-); ?>">
-    <u class="grey-text text-lighten-4 right">Login</u></a>
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html class="no-js ie8" lang="it"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="no-js ie9" lang="it"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js desktop landscape browser-webkit" lang="en"><!--<![endif]-->
+<!-- Mirrored from farmfresh.html.themeplayers.net/index5.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Nov 2016 10:19:28 GMT -->
+<head lang="en">
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <style type="text/css">.gm-style .gm-style-cc span, .gm-style .gm-style-cc a, .gm-style .gm-style-mtc div {
+            font-size: 10px
+        }</style>
+    <style type="text/css">@media print {
+            .gm-style .gmnoprint, .gmnoprint {
+                display: none
+            }
+        }
+
+        @media screen {
+            .gm-style .gmnoscreen, .gmnoscreen {
+                display: none
+            }
+        }</style>
+    <style type="text/css">.gm-style-pbc {
+            transition: opacity ease-in-out;
+            background-color: rgba(0, 0, 0, 0.45);
+            text-align: center
+        }
+
+        .gm-style-pbt {
+            font-size: 22px;
+            color: white;
+            font-family: Roboto, Arial, sans-serif;
+            position: relative;
+            margin: 0;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%)
+        }</style>
+    <style type="text/css">.gm-style {
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            text-decoration: none
+        }
+
+        .gm-style img {
+            max-width: none
+        }</style>
+
+    <meta charset="UTF-8">
+    <meta name="description"
+          content="Farm Fresh is HTML5 template, dedicated for farm owners, organic food distributors and green, eco, veggie food lovers.">
+    <meta name="keywords" content="farm, organic template, html5 eco template">
+    <meta name="author" content="CreateIT">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, shrink-to-fit=no">
+
+
+    <title>Aegis</title>
+
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl("publiczone/css/bootstrap.css");?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl("publiczone/css/style.css");?>">
+
+    <!--[if lt IE 9]>
+    <script src="<?php echo $this->baseUrl("publiczone/bootstrap/js/html5shiv.min.js");?>"></script>
+    <script src="<?php echo $this->baseUrl("publiczone/bootstrap/js/respond.min.js");?>"></script>
+    <![endif]-->
+
+    <script src="<?php echo $this->baseUrl("publiczone/js/modernizr.custom.js");?>"></script>
+    <script type="text/javascript" charset="UTF-8"
+            src="https://maps.googleapis.com/maps-api-v3/api/js/27/2/intl/it_ALL/common.js"></script>
+    <script type="text/javascript" charset="UTF-8"
+            src="https://maps.googleapis.com/maps-api-v3/api/js/27/2/intl/it_ALL/util.js"></script>
+    <script type="text/javascript" charset="UTF-8"
+            src="https://maps.googleapis.com/maps-api-v3/api/js/27/2/intl/it_ALL/geocoder.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl("demo/css/demo.css");?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl("../demo/css/demo.css");?>">
+    <script type="text/javascript" charset="UTF-8"
+            src="https://maps.googleapis.com/maps-api-v3/api/js/27/2/intl/it_ALL/map.js"></script>
+    <script type="text/javascript" charset="UTF-8"
+            src="https://maps.googleapis.com/maps-api-v3/api/js/27/2/intl/it_ALL/marker.js"></script>
+    <script type="text/javascript" charset="UTF-8"
+            src="https://maps.googleapis.com/maps-api-v3/api/js/27/2/intl/it_ALL/overlay.js"></script>
+    <script type="text/javascript" charset="UTF-8"
+            src="https://maps.googleapis.com/maps-api-v3/api/js/27/2/intl/it_ALL/onion.js"></script>
+    <script type="text/javascript" charset="UTF-8"
+            src="https://maps.googleapis.com/maps-api-v3/api/js/27/2/intl/it_ALL/stats.js"></script>
+    <script type="text/javascript" charset="UTF-8"
+            src="https://maps.googleapis.com/maps-api-v3/api/js/27/2/intl/it_ALL/controls.js"></script>
+</head>
+
+
+<body class="cssAnimate navbar--transparent navbar--fixedTop navbar-onepage navbar--makeSmaller">
+<div class="ct-preloader animated fadeOut" style="display: none; z-index: -9999;">
+    <div class="ct-preloader-content animated fadeOut"></div>
+</div>
+
+
+<div class="ct-navbarMobile ct-u-bgBlack">
+    <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+
+<div class="ct-menuMobile">
+    <ul class="ct-menuMobile-navbar list-unstyled ct-u-backgroundDarkGray">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#prodotti">Prodotti</a></li>
+        <li><a href="<?php echo $this->url(array('controller' => 'login', 'action' => 'index'),null,true); ?>">Login</a></li>
+        <li><a href="#contact">contatti</a></li>
+    </ul>
+</div>
+
+<div id="ct-js-wrapper" style="transition: all 0.3s ease;">
+    <header class="ct-mainHeader">
+
+
+        <nav class="navbar navbar-default navbar--type2 yamm">
+
+            <div class="container ct-navbar-container">
+
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="input-group">
+
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"></button>
+                        </span>
+                    </div>
+                </form>
+
+                <div class="navbar-header">
+                    <a class="navbar-brand">
+                        <img class="navbar-brand-defaultColor" alt="Brand" src="<?php echo $this->baseUrl("publiczone/images/demo-content/logo.png");?>">
+                    </a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-left ct-navbar--fadeInLeft">
+                    <li class="onepage"><a href="#home">Home</a></li>
+                    <li class="onepage"><a href="#prodotti">Prodotti</a></li>
+                    <li class="onepage"><a href="<?php echo $this->url(array('controller' => 'login', 'action' => 'index'),null,true); ?>">Login</a></li>
+                    <li class="onepage active"><a href="#contact">Contattaci</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+
+        <div class="container">
+            <section class="ct-u-marginTop70 ct-u-marginBottom70 section section_1" id="home"
+                     style="display: block; position: relative; float: none;">
+
+                <div class="row">
+                    <div class="col-lg-8">
+
+                        <section
+                            class="ct-js-slick ct-slick ct-slick-arrow--type3 ct-u-marginBottom30 slick-initialized slick-slider"
+                            data-autoplay="false" data-arrows="true" data-items="1" data-xsitems="1" data-smitems="1"
+                            data-mditems="1" data-snap-ignore="true" style="height: auto;">
+                            <div class="slick-list draggable" tabindex="0">
+                                <div class="slick-track" style="opacity: 1; width: 3750px; transform: translate3d(-750px, 0px, 0px);">
+                                    <div class="item slick-slide slick-active" data-slick-index="0"
+                                         style="width: 750px;">
+                                        <article class="ct-imageBox ct-u-paddingBoth0">
+                                            <figure class="ct-imageBox-wrapperOuter">
+                                                <div class="ct-imageBox-container">
+                                                    <img src="<?php echo $this->baseUrl("publiczone/images/demo-content/image1.jpg");?>" alt="">
+                                                </div>
+                                                <figcaption
+                                                    class="ct-imageBox-wrapperInner ct-imageBox-wrapperInner--type1">
+                                                    <div class="ct-imageBox-titleContainer">
+                                                        <header class="ct-imageBox-title">
+                                                            <h4 class="ct-u-marginBottom0"><span>welcome to</span></h4>
+
+                                                            <h1>
+                                                                <span>our</span>
+                                                                <span>farm</span>
+                                                                <span>fresh</span>
+                                                                <span>online</span>
+                                                            </h1>
+
+                                                            <div class="text-right">
+                                                                <a href="about-us.html"
+                                                                   class="btn btn-lg ct-btn-image btn-warning"><span>Read About Us</span></a>
+                                                            </div>
+                                                        </header>
+                                                    </div>
+                                                </figcaption>
+                                            </figure>
+                                        </article>
+                                    </div>
+                                    <div class="item slick-slide" data-slick-index="1" style="width: 750px;">
+                                        <article class="ct-imageBox ct-u-paddingBoth0">
+                                            <figure class="ct-imageBox-wrapperOuter">
+                                                <div class="ct-imageBox-container">
+                                                    <img src="<?php echo $this->baseUrl("publiczone/images/demo-content/image4.jpg");?>" alt="">
+                                                </div>
+                                                <figcaption
+                                                    class="ct-imageBox-wrapperInner ct-imageBox-wrapperInner--type1">
+                                                    <div class="ct-imageBox-titleContainer">
+                                                        <header class="ct-imageBox-title">
+                                                            <h4 class="ct-u-marginBottom0"><span>welcome to</span></h4>
+
+                                                            <h1>
+                                                                <span>our</span>
+                                                                <span>farm</span>
+                                                                <span>fresh</span>
+                                                                <span>online</span>
+                                                            </h1>
+
+                                                            <div class="text-right">
+                                                                <a href="about-us.html"
+                                                                   class="btn btn-lg ct-btn-image btn-warning"><span>Read About Us</span></a>
+                                                            </div>
+                                                        </header>
+                                                    </div>
+                                                </figcaption>
+                                            </figure>
+                                        </article>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </section>
+
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6">
+                                <article class="ct-imageBox">
+                                    <a href="#" title="image">
+                                        <figure class="ct-imageBox-wrapperOuter">
+                                            <div class="ct-imageBox-container">
+                                                <img src="<?php echo $this->baseUrl("publiczone/images/demo-content/image2.jpg")?>" alt="">
+                                                <div class="ct-decoration ct-decoration--type1">
+                                                    <div>
+                                                        <div class="ct-decoration-textContainer">
+                                                            <div class="ct-decoration-text">
+                                                                <h4><span>Up To 25% OFF</span></h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <figcaption
+                                                class="ct-imageBox-wrapperInner ct-imageBox-wrapperInner--type2">
+                                                <div class="ct-imageBox-titleContainer">
+                                                    <header class="ct-imageBox-title">
+                                                        <h2><span>3 - 15 <sup>TH</sup>March</span></h2>
+                                                    </header>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                    </a>
+                                </article>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6">
+                                <article class="ct-imageBox">
+                                    <a href="<?php echo $this->baseUrl("single-product.html")?>" title="image">
+                                        <figure class="ct-imageBox-wrapperOuter">
+                                            <div class="ct-imageBox-container">
+                                                <img src="<?php echo $this->baseUrl("publiczone/images/demo-content/image1.jpg")?>" alt="">
+                                                <div class="ct-decoration ct-decoration--type2">
+                                                    <div class="ct-imageBox-titleContainer">
+                                                        <div class="ct-decoration-textContainer">
+                                                            <div class="ct-decoration-text">
+                                                                <header>
+                                                                    <h2 class="ct-u-marginBoth0"><span>The</span></h2>
+                                                                    <h4 class="ct-u-marginBottom20">
+                                                                        <span>perfect blend</span></h4>
+                                                                </header>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <figcaption class="ct-imageBox-wrapperInner">
+
+                                            </figcaption>
+                                        </figure>
+                                    </a>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <section class="container section section_4" id="prodotti"
+                 style="display: block; position: relative; float: none;">
+            <h3 class="ct-headline text-center">
+        <span class="ct-headline-container ct-u-colorMotive">
+            <span class="ct-headline-line ct-headline-line--left"></span>
+                Prodotti
+            <span class="ct-headline-line ct-headline-line--right"></span>
+        </span>
+            </h3>
+        </section>
+
+        <section class="ct-u-marginTop70 ct-u-marginBottom70">
+            <div class="container ct-u-marginBottom80">
+
+                <article class="ct-event-item ct-event-item--type1">
+
+                    <div class="ct-event-item-outer">
+                        <div class="ct-event-item-media">
+                            <figure>
+                                <div id="synced-1" class="ct-slick--synced ct-slick--synced--type2">
+                                    <div class="ct-slick ct-js-slick ct-js-slick-for slick-initialized slick-slider"
+                                         data-items="1" data-arrows="false" data-draggable="false"
+                                         data-touchmove="false" data-snap-ignore="true" style="height: auto;">
+                                        <div class="slick-list" tabindex="0">
+                                            <div class="slick-track"
+                                                 style="opacity: 1; width: 3570px; transform: translate3d(-1530px, 0px, 0px);">
+                                                <div class="item slick-slide slick-cloned" data-slick-index="-1"
+                                                     style="width: 506px;"><a class="ct-js-magnificPopupImage"
+                                                                              href="<?php echo $this->baseUrl("publiczone/images/demo-content/image5.jpg")?>"
+                                                                              title="image5"><img
+                                                            src="<?php echo $this->baseUrl("publiczone/images/demo-content/radish05.jpg")?>" alt=""></a>
+                                                </div>
+                                                <div class="item slick-slide" data-slick-index="0"
+                                                     style="width: 506px;"><a class="ct-js-magnificPopupImage"
+                                                                              href="<?php echo $this->baseUrl("publiczone/images/demo-content/radish01.jpg")?>"
+                                                                              title="image1"><img
+                                                            src="<?php echo $this->baseUrl("publiczone/images/demo-content/radish01.jpg")?>" alt=""></a>
+                                                </div>
+                                                <div class="item slick-slide" data-slick-index="1"
+                                                     style="width: 506px;"><a class="ct-js-magnificPopupImage"
+                                                                              href="<?php echo $this->baseUrl("publiczone/images/demo-content/radish02.jpg")?>"
+                                                                              title="image2"><img
+                                                            src="<?php echo $this->baseUrl("publiczone/images/demo-content/radish02.jpg")?>" alt=""></a>
+                                                </div>
+                                                <div class="item slick-slide slick-active" data-slick-index="2"
+                                                     style="width: 506px;"><a class="ct-js-magnificPopupImage"
+                                                                              href="<?php echo $this->baseUrl("publiczone/images/demo-content/radish03.jpg")?>"
+                                                                              title="image3"><img
+                                                            src="<?php echo $this->baseUrl("publiczone/images/demo-content/radish03.jpg")?>" alt=""></a>
+                                                </div>
+                                                <div class="item slick-slide" data-slick-index="3"
+                                                     style="width: 506px;"><a class="ct-js-magnificPopupImage"
+                                                                              href="<?php echo $this->baseUrl("publiczone/images/demo-content/radish04.jpg")?>"
+                                                                              title="image4"><img
+                                                            src="<?php echo $this->baseUrl("publiczone/images/demo-content/radish04.jpg")?>" alt=""></a>
+                                                </div>
+                                                <div class="item slick-slide" data-slick-index="4"
+                                                     style="width: 506px;"><a class="ct-js-magnificPopupImage"
+                                                                              href="publiczone/images/demo-content/radish02.jpg")?>"
+                                                                              title="image5"><img
+                                                            src="<?php echo $this->baseUrl("publiczone/images/demo-content/radish05.jpg")?>" alt=""></a>
+                                                </div>
+                                                <div class="item slick-slide slick-cloned" data-slick-index="5"
+                                                     style="width: 506px;"><a class="ct-js-magnificPopupImage"
+                                                                              href="publiczone/images/demo-content/radish02.jpg")?>"
+                                                                              title="image1"><img
+                                                            src="<?php echo $this->baseUrl("publiczone/images/demo-content/radish01.jpg")?>" alt=""></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="ct-slick ct-js-slick ct-js-slick-nav ct-slick-arrow--type4 ct-slick-thumbnailHover--type2 slick-initialized slick-slider"
+                                        data-items="2" data-centermode="true" data-centerpadding="0"
+                                        data-asnavfor="#synced-1 .ct-js-slick-for" data-xsitems="2" data-smitems="4"
+                                        data-focusonselect="true" data-snap-ignore="true" style="height: auto;">
+                                        <div class="slick-list draggable" tabindex="0" style="padding: 0px;">
+                                            <div class="slick-track"
+                                                 style="opacity: 1; width: 1845px; transform: translate3d(-615px, 0px, 0px);">
+
+                                                <div class="item slick-slide slick-cloned" data-slick-index="-4"
+                                                     style="width: 119px;"><img
+                                                        src="<?php echo $this->baseUrl("publiczone/images/demo-content/radish02.jpg")?>" alt="">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </figure>
+                        </div>
+
+                        <div class="ct-event-item-wrapper">
+
+
+                            <div class="ct-event-item-inner">
+                                <section>
+                                    <div class="ct-event-title">
+                                        <a href="single-event.html">
+                                            <h6><span>mixed freshly harvested mushrooms</span></h6>
+                                        </a>
+                                    </div>
+
+                                    <div class="ct-event-text">
+                                        <p>
+                                            Radishes require friable, well drained soils with a pH range of 5.8-6.8. Sow
+                                            at any time during the season, beginning in early spring. Use 2-3" wide
+                                            bands, seeds about 3/4-1" apart (about 35 seeds/ft. except 10 seeds/ft. for
+                                            624 Red Meat and 616 Nero Tondo), 1/2" deep, rows 1' apart, or any row or
+                                            bedding scheme that will eliminate unplanted ground to discourage weeds.
+                                        </p>
+                                    </div>
+
+                                    <div class="text-left">
+                                        <a href="single-event.html" class="btn ct-btn-image btn-warning"><span>learn more</span></a>
+                                        <a href="#" class="btn ct-btn-image btn-default"><span>buy tickets</span></a>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </article>
+
+
+            </div>
+        </section>
+
+
+        <section class="container section section_6" id="contact"
+                 style="display: block; position: relative; float: none;">
+            <h3 class="ct-headline text-center">
+        <span class="ct-headline-container ct-u-colorMotive">
+            <span class="ct-headline-line ct-headline-line--left"></span>
+                contact us
+            <span class="ct-headline-line ct-headline-line--right"></span>
+        </span>
+            </h3>
+        </section>
+
+        <section class="ct-u-marginTop70 ct-u-marginBottom70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="successMessage alert alert-success alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">×</span></button>
+                            <strong>Success!</strong> Congratulation, mission success
+                        </div>
+
+                        <div class="errorMessage alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">×</span></button>
+                            <strong>Danger!</strong> You did something wrong
+                        </div>
+
+                        <form data-email-subject="Form Subject" class="validateIt" role="form"
+                              action="http://farmfresh.html.themeplayers.net/publiczone/form/send.php" method="POST">
+                            <div class="form-group">
+                                <label class="ct-u-colorBrownDark2" for="firstName">First name*</label>
+                                <input type="text" placeholder="Name" class="form-control input-sm" id="firstName"
+                                       required="" name="field[]">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="ct-u-colorBrownDark2" for="lastName">Last Name*</label>
+                                <input type="text" placeholder="Surname" class="form-control input-sm" id="lastName"
+                                       required="" name="field[]">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="ct-u-colorBrownDark2" for="email">Email Address*</label>
+                                <input type="email" placeholder="Email" class="form-control input-sm" id="email"
+                                       required="" name="field[]">
+                            </div>
+
+                            <div class="form-group ct-js-radio">
+                                <label class="ct-u-colorBrownDark2" for="email">Subject*</label>
+                                <div class="radio">
+                                    <input type="radio" placeholder="Subject" name="field[]" id="optionsRadios1"
+                                           value="Education">
+                                    <label for="optionsRadios1">Education</label>
+                                </div>
+
+                                <div class="radio">
+                                    <input type="radio" placeholder="Subject" name="field[]" id="optionsRadios2"
+                                           value="About Our Service" checked="">
+                                    <label for="optionsRadios2">About Our Service</label>
+                                </div>
+
+                                <div class="radio">
+                                    <input type="radio" name="field[]" placeholder="Subject" id="optionsRadios3"
+                                           value="Events">
+                                    <label for="optionsRadios3">Events</label>
+                                </div>
+
+                                <div class="radio">
+                                    <input type="radio" placeholder="Subject" name="field[]" id="optionsRadios4"
+                                           value="Our Website">
+                                    <label for="optionsRadios4">Our Website</label>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-2 col-sm-3 col-xs-4">
+                                        <div class="radio">
+                                            <input class="ct-js-radio-input" placeholder="Subject" name="field[]"
+                                                   type="radio" id="optionsRadios5" value="Other">
+                                            <label for="optionsRadios5">Other</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-10 col-sm-9 col-xs-8">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="other_text">Other</label>
+                                            <input class="form-control ct-js-radio-target input-sm"
+                                                   placeholder="Subject Content" name="field[]" type="text"
+                                                   id="other_text" required="" disabled="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="ct-u-colorBrownDark2" for="message">Message*</label>
+                                <textarea class="form-control" rows="7" id="message" placeholder="Message" required=""
+                                          name="field[]"></textarea>
+                            </div>
+
+                            <p class="text-right ct-u-colorBrownDark2">*Required fields.</p>
+
+                            <div class="text-left ct-u-marginTop40 ct-u-marginBottom70">
+                                <button type="submit" class="btn btn-lg ct-btn-image btn-warning">
+                                    <span>Send message</span></button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-6 ct-u-marginBottom30">
+                                    <h3 class="ct-u-colorYellow ct-u-ff--2 text-uppercase ct-u-marginBottom30">customer
+                                        service</h3>
+                                    <h6 class="ct-u-colorBrownDark2 text-uppercase ct-fw-600 ct-u-size13 ct-u-marginBottom15">
+                                        PHONE</h6>
+
+                                    <p class="ct-u-colorGray ct-u-marginBottom10">1.800.796.6009</p>
+                                    <p class="ct-u-colorGray ct-u-marginBottom20">Monday - Friday, 7:00 a.m. - 6:00 p.m.
+                                        PT</p>
+
+                                    <p class="ct-u-colorMotive ct-u-marginBottom25 text-uppercase">Missed our office
+                                        hours? Leave a message; Voicemail messages checked 7 days a week.</p>
+
+                                    <h6 class="ct-u-colorBrownDark2 text-uppercase ct-fw-600 ct-u-size13 ct-u-marginBottom15">
+                                        Email</h6>
+
+                                    <p class="ct-u-colorGray">contactus@organicfarmfresh.com</p>
+
+                                </div>
+                                <div class="col-md-12 col-sm-6 ct-u-marginBottom30">
+                                    <h3 class="ct-u-colorYellow text-uppercase ct-u-ff--2 ct-u-marginBottom30">MAIL
+                                        LOCATIONS</h3>
+                                    <h6 class="ct-u-colorBrownDark2 text-uppercase ct-fw-600 ct-u-size13 ct-u-marginBottom15">
+                                        organic Farm Fresh (Northern CA)</h6>
+
+                                    <p class="ct-u-colorGray ct-u-marginBottom10">12345 State Highway 16</p>
+                                    <p class="ct-u-colorGray ct-u-marginBottom30">Capay, CA 95656</p>
+
+                                    <h6 class="ct-u-colorBrownDark2 text-uppercase ct-fw-600 ct-u-size13 ct-u-marginBottom15">
+                                        organic Farm Fresh (Southern CA)</h6>
+
+                                    <p class="ct-u-colorGray ct-u-marginBottom10">PO Box 1234</p>
+                                    <p class="ct-u-colorGray">Maywood, CA 902789</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <div class="ct-postFooter">
+            <div class="container">
+                <div class="ct-u-displayTableVertical">
+                    <div class="ct-u-displayTableCell text-left">
+                        <p class="ct-u-marginBoth0 ct-u-colorWhite">© 2016 Aegis. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<a href="#" class="ct-js-btnScrollUp is-active"><i class="fa fa-angle-up"></i></a>
+
+<script src="<?php echo $this->baseUrl("publiczone/js/jquery.min.js");?>"></script>
+<script src="<?php echo $this->baseUrl("publiczone/js/dependencies.js");?>"></script>
+<script src="<?php echo $this->baseUrl("publiczone/bootstrap/js/bootstrap.min.js");?>"></script>
+<script src="<?php echo $this->baseUrl("publiczone/plugins/slick/slick.min.js");?>"></script>
+<script src="<?php echo $this->baseUrl("publiczone/plugins/slick/init.js");?>"></script>
+
+<script src="<?php echo $this->baseUrl("publiczone/twitter/js/jquery.tweet.js");?>"></script>
+<script src="<?php echo $this->baseUrl("publiczone/form/js/contact-form.js");?>"></script>
+
+<script src="<?php echo $this->baseUrl("publiczone/js/ct-mediaSection/jquery.stellar.min.js");?>"></script>
+<script src="<?php echo $this->baseUrl("publiczone/js/ct-mediaSection/init.js");?>"></script>
+
+<script src="<?php echo $this->baseUrl("publiczone/js/onepager/jquery.pagescroller.lite.js");?>"></script>
+<script src="<?php echo $this->baseUrl("publiczone/js/onepager/init.js");?>"></script>
+
+<script src="<?php echo $this->baseUrl("publiczone/js/portfolio/jquery.isotope.min.js");?>"></script>
+<script src="<?php echo $this->baseUrl("publiczone/js/portfolio/imagesloaded.js");?>"></script>
+<script src="<?php echo $this->baseUrl("publiczone/js/portfolio/init.js");?>"></script>
+
+<script src="<?php echo $this->baseUrl("publiczone/js/magnific-popup/jquery.magnific-popup.min.js");?>"></script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+<script src="<?php echo $this->baseUrl("publiczone/js/gmap/gmap3.min.js");?>"></script>
+
+<script src="<?php echo $this->baseUrl("publiczone/js/counter/jquery.countTo.js");?>"></script>
+
+<script src="<?php echo $this->baseUrl("publiczone/js/main.js");?>"></script>
+
+
+
+
+<!-- Mirrored from farmfresh.html.themeplayers.net/index5.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Nov 2016 10:19:28 GMT -->
+</body>
+</html>
