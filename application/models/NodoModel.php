@@ -9,6 +9,11 @@ class Application_Model_NodoModel
         return $this->_tabella = new Application_Model_DbTable_Nodo();
     }
 
+    public function contaNodi(){
+        return $this->_tabella->fetchAll($this->_tabella->select()
+            ->from("nodo", array("num"=>"COUNT(*)")))->current();
+    }
+
     public function inserisci($dati)
     {
 

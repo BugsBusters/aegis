@@ -19,6 +19,12 @@ class Application_Model_PossessoModel
 
     }
 
+    public function contaRotture(){
+        return $this->_tabella->fetchAll($this->_tabella->select()
+            ->from("possesso", array("num"=>"COUNT(*)"))->where('stato = 1'))->current();
+
+    }
+    
     public function inseriscipossesso($dati)
     {
         return $this->insert($dati);

@@ -1,8 +1,36 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Admin</b> and script/action name <b>index</b></p>
+<div class="row">
+
+	<div class="col-xl-12">
+		<div class="row">
+			<div class="col-sm-6">
+				<article class="statistic-box" >
+					<div>
+						<div class="number"><?php echo $this->contanodi['num']; ?></div>
+						<div class="caption">
+							<div>Nodi installati</div>
+						</div>
+					</div>
+				</article>
+			</div><!--.col-->
+			<div class="col-sm-6">
+				<article class="statistic-box purple">
+					<div>
+						<div class="number"><?php echo $this->contarotti['num']; ?></div>
+						<div class="caption">
+							<div>Malfunzionamenti</div>
+						</div>
+					</div>
+				</article>
+			</div><!--.col-->
+
+
+		</div><!--.row-->
+	</div><!--.col-->
+
+</div><!--.row-->
+<div class="row">
+
 </div>
 
-<div align="center">
-	<?php echo $this->formprova; ?>
-</div>
+
+

@@ -47,7 +47,12 @@ class AdminController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // action body
+        $possessomodel = new Application_Model_PossessoModel();
+        $nodimodel= new Application_Model_NodoModel();
+        $contanodi = $nodimodel->contaNodi();
+        $contarotti = $possessomodel->contaRotture();
+        $this->view->assign('contanodi', $contanodi);
+        $this->view->assign('contarotti', $contarotti);
     }
 
     public function notificheAction()

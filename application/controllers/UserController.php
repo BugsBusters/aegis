@@ -45,7 +45,7 @@ class UserController extends Zend_Controller_Action
         $umiditaModel = new Application_Model_UmiditaModel();
         $temperaturaModel = new Application_Model_TemperaturaModel();
         $trappolaModel = new Application_Model_TrappolaModel();
-
+        
         //dichiaro le medie
 
         $umiditaMedia = $umiditaModel->getUmiditaMedia();
