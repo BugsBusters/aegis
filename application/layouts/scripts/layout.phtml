@@ -67,14 +67,14 @@
                             <div class="dropdown-menu-notif-list">
                                 <?php
                                 foreach ($this->elenconotifiche as $notifiche): ?>
-                                <div class="dropdown-menu-notif-item">
-                                    <div class="photo">
-                                        <img src="img/photo-64-1.jpg" alt="">
+                                    <div class="dropdown-menu-notif-item">
+                                        <div class="photo">
+                                            <img src="img/photo-64-1.jpg" alt="">
+                                        </div>
+                                        <div class="dot"></div>
+                                        <a href="#"><?php echo $notifiche->titolo; ?></a>
+                                        <div class="color-blue-grey-lighter"></div><?php echo $notifiche->ora; ?>
                                     </div>
-                                    <div class="dot"></div>
-                                    <a href="#"><?php echo $notifiche->titolo; ?></a>
-                                    <div class="color-blue-grey-lighter"></div><?php echo $notifiche->ora; ?>
-                                </div>
                                 <?php endforeach; ?>
 
 
@@ -93,7 +93,8 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
                             <a class="dropdown-item" href="<?php echo $this->url(
-                                array('controller' => $this->role, 'action' => 'modificaprofilo')) ?>"><span class="font-icon glyphicon glyphicon-user"></span>Modifica
+                                array('controller' => $this->role, 'action' => 'modificaprofilo')) ?>"><span
+                                    class="font-icon glyphicon glyphicon-user"></span>Modifica
                                 Profilo</a>
                             <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-cog"></span>Impostazioni</a>
                             <div class="dropdown-divider"></div>
@@ -102,7 +103,7 @@
                                     class="font-icon glyphicon glyphicon-log-out"></span>Logout</a>
                         </div>
                     </div>
-                    
+
                 </div><!--.site-header-shown-->
 
                 <div class="mobile-menu-right-overlay"></div>
@@ -125,21 +126,21 @@
         </li>
 
         <li class="giulia-beige">
-	           <a href="<?php echo $this->url(
-                   array('controller' => $this->role, 'action' => 'modificaprofilo')) ?>">
+            <a href="<?php echo $this->url(
+                array('controller' => $this->role, 'action' => 'modificaprofilo')) ?>">
                    <span>
                         <i class="font-icon font-icon-user"></i>
                         <span class="lbl">Modifica Profilo</span>
                    </span>
-               </a>
+            </a>
         </li>
         <li class="orange-red">
-	            <span>
+            <a href="<?php echo $this->url(array("controller" => "user", "action" => "impostazionisensori")); ?>">
+                <span>
 	                <i class="fa fa-cogs"></i>
-                    <a href="<?php echo $this->url(array("controller" => "admin", "action" => "impostazionisensori"));?>">
-	                    <span class="lbl">Impostazioni sensori</span>
-                    </a>
-	            </span>
+                    <span class="lbl">Impostazioni sensori</span>
+                </span>
+            </a>
         </li>
 
         <!-- menu admin -->
@@ -150,17 +151,21 @@
 	                <span class="lbl">Gestione Uliveti</span>
 	            </span>
             <ul>
-                <li><a href="documentation.html"><span class="lbl">Gestione uliveti</span></a></li>
-                <li><a href="<?php echo $this->url(array("controller" => "admin", "action" => "gestioneappezzamenti"));?>"><span class="lbl">Gestione appezzamenti</span></a></li>
+                <li><a href="<?php echo $this->url(array("controller" => "admin", "action" => "elencouliveti")); ?>"><span class="lbl">Gestione uliveti</span></a></li>
+                <li>
+                    <a href="<?php echo $this->url(array("controller" => "admin", "action" => "gestioneappezzamenti")); ?>"><span
+                            class="lbl">Gestione appezzamenti</span></a></li>
                 <li><a href="faq-search.html"><span class="lbl">Gestioni modi</span></a></li>
             </ul>
         </li>
 
         <li class="giulia-beige">
+            <a href="<?php echo $this->url(array("controller" => "admin", "action" => "gestioneutenti")); ?>">
 	            <span>
 	                <i class="font-icon font-icon-user"></i>
 	                <span class="lbl">Gestione Utenti</span>
 	            </span>
+            </a>
         </li>
 
         <li class="giulia-pink">
