@@ -9776,12 +9776,22 @@ a.label-light-grey:hover {
     opacity: 1
 }
 
+.blacklink {
+    color: #0A0A0A;
+}
+
 .card-blue .card-header .modal-close:hover, .card-blue-fill .card-header .modal-close:hover, .card-green .card-header .modal-close:hover, .card-orange .card-header .modal-close:hover, .card-purple .card-header .modal-close:hover, .card-red .card-header .modal-close:hover {
     opacity: .75
 }
 
 .scrollable-block {
     overflow: auto
+}
+
+.pad{
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .scrollable-block.scrollable-gradient .jspContainer:after {
