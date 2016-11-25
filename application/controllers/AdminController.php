@@ -272,11 +272,12 @@ class AdminController extends Zend_Controller_Action
 
     public function elencoappezzamentiAction()
     {
-        $idUliveto = $this->getParam('id');
+        $idUliveto = $this->getParam('uliveto');
         $modelAppezz = new Application_Model_AppezzamentoModel();
         if (!is_null($idUliveto)) {
             $appezzamenti = $modelAppezz->getAppezzamenti();
-            $this->view->assign('appezzamenti', $appezzamenti);
+            $this->view->assign('elencoAppezzamenti', $appezzamenti);
+            $this->view->assign('uliveto', $idUliveto);
         }
     }
 
