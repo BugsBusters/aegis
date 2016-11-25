@@ -66,12 +66,10 @@
 
                             </div>
                             <div class="dropdown-menu-notif-list">
-                                <?php
+                                <?php 
                                 foreach ($this->elenconotifiche as $notifiche): ?>
                                     <div class="dropdown-menu-notif-item">
-                                        <div class="photo">
-                                            <img src="img/photo-64-1.jpg" alt="">
-                                        </div>
+                                        
                                         <div class="dot"></div>
                                         <a href="#"><?php echo $notifiche->titolo; ?></a>
                                         <div class="color-blue-grey-lighter"></div><?php echo $notifiche->ora; ?>
