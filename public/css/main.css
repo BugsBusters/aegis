@@ -7620,9 +7620,20 @@ hr.margin-4 {
     border-color: #bfcc96
 }
 
+
 .btn.btn-primary:hover {
     background-color: #ebe7ce;
     border-color: #ebe7ce
+}
+
+.btn.btn-primary-giulia {
+    background-color: #5c461f;
+    border-color: #5c461f
+}
+
+.btn.btn-primary-giulia:hover {
+    background-color: #b69d71;
+    border-color: #b69d71
 }
 
 .btn.btn-secondary {
@@ -11260,7 +11271,7 @@ body.modal-open {
     -webkit-border-radius: inherit;
     border-radius: inherit;
     height: 142px;
-    background: #af7180 50% 0;
+    background: #c9b32c 50% 0;
     background-size: 21px 20px;
     position: relative
 }

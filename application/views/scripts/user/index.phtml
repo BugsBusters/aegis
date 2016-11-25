@@ -37,57 +37,68 @@
     </div><!--.col-->
 
 </div><!--.row-->
+
+
 <div class="row">
-    <?php foreach ($this->elencoOliveti as $oliveto): ?>
-        <div class="col-md-6" style="background-color:white">
-            <?php echo $oliveto->descrizione; ?>
-            <br>
-            <a href="<?php echo $this->url(array(
-                "controller" => "user",
-                "action" => "visualizzaappezzamenti",
-                "uliveto" => $oliveto->iduliveto,
-            ),
-                "default", true);
-            ?>">
-                <button class="btn btn-rounded btn-primary">Visualizza Appezzamenti</button>
-            </a>
-        </div>
-    <?php endforeach; ?>
 
-    <!-- GESTIONE GRAFICI
-    <div class="col-md-12">
-        <div class="card" id="graphs">
-            <div class="card-block">
-                <div class="m-b-1">
 
-                    <h6>Conta delle mosche</h6></div>
-                <div id="mosche"class="dashboard-line chart" style="height:300px"></div>
-            </div>
-        </div>
+    <div class="gallery-grid">
+        <?php foreach ($this->elencoOliveti as $oliveto): ?>
+            <div class="gallery-col">
+                <article class="gallery-item" style="height: 158px;">
+                    <img class="gallery-picture" src="<?php echo $this->baseUrl("img/oliveto.jpg"); ?>" alt=""
+                         height="158">
+                </article>
+
+                    <article class="gallery-item text-center center-block" style="height: 158px;">
+                        <p><?php echo $oliveto->descrizione; ?></p>
+                        <a href="<?php echo $this->url(array(
+                            "controller" => "user",
+                            "action" => "visualizzaappezzamenti",
+                            "uliveto" => $oliveto->iduliveto,
+                        ),
+                            "default", true);
+                        ?>">
+                            <button class="btn btn-rounded btn-primary-giulia">Visualizza Appezzamenti</button>
+                        </a>
+                    </article>
+
+            </div><!--.gallery-col-->
+        <?php endforeach; ?>
     </div>
-    <div class="col-md-12">
-        <div class="card" id="graphs">
-            <div class="card-block">
-                <div class="m-b-1">
-
-                    <h6>Grafico della temperatura</h6></div>
-                <div id="temperatura" class="dashboard-line chart" style="height:300px"></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-12">
-        <div class="card" id="graphs">
-            <div class="card-block">
-                <div class="m-b-1">
-
-                    <h6>Grafico dell'umidità</h6></div>
-                <div id="umidita" class="dashboard-line chart" style="height:300px"></div>
-            </div>
-        </div>
-    </div>
-    -->
 
 </div>
 
 
+<!-- GESTIONE GRAFICI
+<div class="col-md-12">
+    <div class="card" id="graphs">
+        <div class="card-block">
+            <div class="m-b-1">
 
+                <h6>Conta delle mosche</h6></div>
+            <div id="mosche"class="dashboard-line chart" style="height:300px"></div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="card" id="graphs">
+        <div class="card-block">
+            <div class="m-b-1">
+
+                <h6>Grafico della temperatura</h6></div>
+            <div id="temperatura" class="dashboard-line chart" style="height:300px"></div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="card" id="graphs">
+        <div class="card-block">
+            <div class="m-b-1">
+
+                <h6>Grafico dell'umidità</h6></div>
+            <div id="umidita" class="dashboard-line chart" style="height:300px"></div>
+        </div>
+    </div>
+</div>
+-->
