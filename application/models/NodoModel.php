@@ -24,6 +24,11 @@ class Application_Model_NodoModel
         return $this->_tabella->delete("idnodo = ".$id);
     }
 
+    public function getNodoByAppezzamento($idappezzamento){
+        $sql = $this->_tabella->select()->where("idappezzamento = ?",$idappezzamento);
+        return $this->_tabella->fetchAll($sql);
+    }
+
 
 }
 

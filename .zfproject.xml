@@ -24,9 +24,17 @@
           <actionMethod actionName="getGraficoTemperatura"/>
           <actionMethod actionName="visualizzaappezzamenti"/>
           <actionMethod actionName="visualizzanodi"/>
+          <actionMethod actionName="visualizzanodo"/>
+          <actionMethod actionName="inseriscinodo"/>
+          <actionMethod actionName="inseriscinodopost"/>
+          <actionMethod actionName="modificanodo"/>
+          <actionMethod actionName="modificanodopost"/>
+          <actionMethod actionName="eliminanodo"/>
         </controllerFile>
       </controllersDirectory>
-      <formsDirectory enabled="false"/>
+      <formsDirectory enabled="false">
+        <formFile formName="Datinodo"/>
+      </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
         <dbTableDirectory>
@@ -78,6 +86,24 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="User">
             <viewScriptFile forActionName="visualizzanodi"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="visualizzanodo"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="inseriscinodo"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="inseriscinodopost"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="modificanodo"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="modificanodopost"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="eliminanodo"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

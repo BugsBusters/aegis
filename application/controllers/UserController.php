@@ -7,10 +7,14 @@ class UserController extends Zend_Controller_Action
 
     protected $_authService = null;
 
+    protected $_nodoForm = null;
+
     public function init()
     {
         $this->_authService = new Application_Service_Auth();
         $this->user = $this->_authService->getAuth()->getIdentity()->current();
+        $this->_nodoForm = $this->inseriscinodoAction();
+        $this->view->nodoForm = $this->_nodoForm;
 
     }
 
@@ -73,15 +77,84 @@ class UserController extends Zend_Controller_Action
 
     public function visualizzanodiAction()
     {
-        $this->view->currentPage = "visualizzanodi";
-        if($this->hasParam("appezzamento")){
-            $appezzamentoModel = new Application_Model_AppezzamentoModel();
-            $this->view->appezzamento = $appezzamentoModel->getAppezzamentoById($this->getParam("appezzamento"))->current();
+        if ($this->hasParam("uliveto") && $this->hasParam("appezzamento")) {
+            $nodoModel = new Application_Model_NodoModel();
+            $this->view->elencoNodi = $nodoModel->getNodoByAppezzamento($this->getParam("appezzamento"));
+        } else
+            //
+            return;
+    }
+
+    public function visualizzanodoAction()
+    {
+        // action body
+    }
+
+    public function inseriscinodoAction()
+    {
+        $this->_nodoForm = new Application_Form_Datinodo();
+        $this->_nodoForm->setAction($this->_helper->url->url(array(
+            'controller' => 'user',
+            'action' => 'inseriscinodopost',
+            'uliveto' => $this->getParam("uliveto"),
+            'appezzamento' => $this->getParam("appezzamento")
+            ),
+            'default'
+        ));
+        return $this->_nodoForm;
+    }
+
+    public function inseriscinodopostAction()
+    {
+        $request = $this->getRequest(); //vede se esiste una richiesta
+        if (!$request->isPost()) { //controlla che sia stata passata tramite post
+            return $this->_helper->redirector('inseriscinodo'); // se non c'è un passaggio tramite post, reindirizza all' inseriscicentroAction
         }
+        $form=$this->_nodoForm;
+        if (!$form->isValid($request->getPost())) {
+            $form->setDescription('Attenzione: alcuni dati inseriti sono errati.');
+            return $this->render('inseriscinodo');
+        }
+        $datiform=$form->getValues(); //datiform è un array
+        $datiform['stato']=0;
+        $datiform['indice-posizione']=$_POST['indiceposizione'];
+
+
+        $nodoModel = new Application_Model_NodoModel();
+        $nodoModel->inserisci($datiform);
+        $params = array('uliveto' => $this->getParam("uliveto"), 'appezzamento' => $this->getParam("appezzamento"));
+        $this->_helper->redirector('visualizzanodi','user' ,null, $params);
+    }
+
+    public function modificanodoAction()
+    {
+        // action body
+    }
+
+    public function modificanodopostAction()
+    {
+        // action body
+    }
+
+    public function eliminanodoAction()
+    {
+        // action body
     }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
