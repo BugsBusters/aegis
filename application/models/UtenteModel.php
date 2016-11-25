@@ -19,9 +19,9 @@ class Application_Model_UtenteModel
 
     public function getUserByUser($username)
     {
-        $select = $this->select()
+        $select = $this->_tabella->select()
             ->where('username IN(?)', $username);
-        return $this->fetchAll($select);
+        return $this->_tabella->fetchAll($select);
     }
 
     public function modifica($dati, $id)
@@ -49,6 +49,30 @@ class Application_Model_UtenteModel
 
         return $this->_tabella->fetchAll($sql);
 
+    }
+
+    public function existUsername($username){
+        $select=$this->_tabella->select()
+            ->where('username=?',$username);
+
+        $risultato = $this->_tabella->getAdapter()->query($select);
+
+        if($risultato->rowCount()==0)
+            $controllo = false;
+        else $controllo = true;
+        return $controllo;
+    }
+    
+    public function updateUtente($dati, $username){
+        $data = array(
+            'username'      => $dati['username'],
+            'nome'      => $dati['nome'],
+            'cognome'      => $dati['cognome'],
+            'password'      => $dati['password'],
+        );
+        $where = $this->_tabella->getAdapter()->quoteInto('username = ?', $username);
+
+        $this->_tabella->update($data, $where);
     }
     
 }
