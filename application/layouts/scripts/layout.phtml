@@ -215,123 +215,117 @@
 <script src="<?php echo $this->baseUrl("js/app.js"); ?>"></script>
 
 <?php if ($this->currentPage == "index"): ?>
-<script>
-    $(document).ready(function () {
-       graficoTemperatura()
-        graficoMosche()
-        graficoUmidita()
-    });
-
-
-
-
-    function graficoTemperatura() {
-        //dichiaro il carattere " come pattern, e re come espressione regolare. lo userò per rimpiazzarla globalmente
-
-
-        //data = [[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26]];
-        data = <?php echo $this->datitemperatura; ?>;
-        // data = [[1, 3], [2, 14.01], [3.5, 3.14]];
-        s = [{
-            data: data,
-            color: '#f0c54c'
-        }]
-
-
-
-        $.plot($("#temperatura"), s, {
-            grid: {borderWidth: 1, color: "rgba(0,0,0,0.02)"},
-            yaxis: {
-                minTickSize: 1,
-                tickDecimals: 0,
-                mode: "categories",
-                tickLength: 0,
-                axisLabelUseCanvas: !0,
-                axisLabelFontSizePixels: 12,
-                axisLabelFontFamily: "inherit"
-            },
-            xaxis: {
-                minTickSize: [1, "day"],
-                mode: "time",
-                timeformat: "%d/%m/%y"
-            }
+    <script>
+        $(document).ready(function () {
+            graficoTemperatura()
+            graficoMosche()
+            graficoUmidita()
         });
 
-
-    }
-
-    function graficoUmidita() {
-        //dichiaro il carattere " come pattern, e re come espressione regolare. lo userò per rimpiazzarla globalmente
+        function graficoTemperatura() {
+            //dichiaro il carattere " come pattern, e re come espressione regolare. lo userò per rimpiazzarla globalmente
 
 
-        //data = [[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26]];
-        data = <?php echo $this->datiUmidita; ?>;
-        // data = [[1, 3], [2, 14.01], [3.5, 3.14]];
-        s = [{
-            data: data,
-            color: '#f0c54c'
-        }]
+            //data = [[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26]];
+            data = <?php echo $this->datitemperatura; ?>;
+            // data = [[1, 3], [2, 14.01], [3.5, 3.14]];
+            s = [{
+                data: data,
+                color: '#f0c54c'
+            }]
+
+            $.plot($("#temperatura"), s, {
+                grid: {borderWidth: 1, color: "rgba(0,0,0,0.02)"},
+                yaxis: {
+                    minTickSize: 1,
+                    tickDecimals: 0,
+                    mode: "categories",
+                    tickLength: 0,
+                    axisLabelUseCanvas: !0,
+                    axisLabelFontSizePixels: 12,
+                    axisLabelFontFamily: "inherit"
+                },
+                xaxis: {
+                    minTickSize: [1, "day"],
+                    mode: "time",
+                    timeformat: "%d/%m/%y"
+                }
+            });
 
 
+        }
 
-        $.plot($("#umidita"), s, {
-            grid: {borderWidth: 1, color: "rgba(0,0,0,0.02)"},
-            yaxis: {
-                minTickSize: 1,
-                tickDecimals: 0,
-                mode: "categories",
-                tickLength: 0,
-                axisLabelUseCanvas: !0,
-                axisLabelFontSizePixels: 12,
-                axisLabelFontFamily: "inherit"
-            },
-            xaxis: {
-                minTickSize: [1, "day"],
-                mode: "time",
-                timeformat: "%d/%m/%y"
-            }
-        });
+        function graficoUmidita() {
+            //dichiaro il carattere " come pattern, e re come espressione regolare. lo userò per rimpiazzarla globalmente
 
 
-    }
-
-    function graficoMosche() {
-        //dichiaro il carattere " come pattern, e re come espressione regolare. lo userò per rimpiazzarla globalmente
-
-
-        //data = [[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26]];
-        data = <?php echo $this->datiConta; ?>;
-        // data = [[1, 3], [2, 14.01], [3.5, 3.14]];
-        s = [{
-            data: data,
-            color: '#f0c54c'
-        }]
+            //data = [[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26]];
+            data = <?php echo $this->datiUmidita; ?>;
+            // data = [[1, 3], [2, 14.01], [3.5, 3.14]];
+            s = [{
+                data: data,
+                color: '#f0c54c'
+            }]
 
 
+            $.plot($("#umidita"), s, {
+                grid: {borderWidth: 1, color: "rgba(0,0,0,0.02)"},
+                yaxis: {
+                    minTickSize: 1,
+                    tickDecimals: 0,
+                    mode: "categories",
+                    tickLength: 0,
+                    axisLabelUseCanvas: !0,
+                    axisLabelFontSizePixels: 12,
+                    axisLabelFontFamily: "inherit"
+                },
+                xaxis: {
+                    minTickSize: [1, "day"],
+                    mode: "time",
+                    timeformat: "%d/%m/%y"
+                }
+            });
 
-        $.plot($("#mosche"), s, {
-            grid: {borderWidth: 1, color: "rgba(0,0,0,0.02)"},
-            yaxis: {
-                minTickSize: 1,
-                tickDecimals: 0,
-                mode: "categories",
-                tickLength: 0,
-                axisLabelUseCanvas: !0,
-                axisLabelFontSizePixels: 12,
-                axisLabelFontFamily: "inherit"
-            },
-            xaxis: {
-                minTickSize: [1, "day"],
-                mode: "time",
-                timeformat: "%d/%m/%y"
-            }
-        });
+
+        }
+
+        function graficoMosche() {
+            //dichiaro il carattere " come pattern, e re come espressione regolare. lo userò per rimpiazzarla globalmente
 
 
-    }
-    (jQuery);
+            //data = [[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26],[new Date(2012, 1, 1), 26]];
+            data = <?php echo $this->datiConta; ?>;
+            // data = [[1, 3], [2, 14.01], [3.5, 3.14]];
+            s = [{
+                data: data,
+                color: '#f0c54c'
+            }]
+
+
+            $.plot($("#mosche"), s, {
+                grid: {borderWidth: 1, color: "rgba(0,0,0,0.02)"},
+                yaxis: {
+                    minTickSize: 1,
+                    tickDecimals: 0,
+                    mode: "categories",
+                    tickLength: 0,
+                    axisLabelUseCanvas: !0,
+                    axisLabelFontSizePixels: 12,
+                    axisLabelFontFamily: "inherit"
+                },
+                xaxis: {
+                    minTickSize: [1, "day"],
+                    mode: "time",
+                    timeformat: "%d/%m/%y"
+                }
+            });
+
+
+        }
+        (jQuery);
+    </script>
 <?php endif; ?>
-</script>
+
 </body>
 
 </html>

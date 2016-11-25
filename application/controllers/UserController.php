@@ -73,6 +73,7 @@ class UserController extends Zend_Controller_Action
 
     public function visualizzanodiAction()
     {
+        $this->view->currentPage = "visualizzanodi";
         if($this->hasParam("appezzamento")){
             $appezzamentoModel = new Application_Model_AppezzamentoModel();
             $this->view->appezzamento = $appezzamentoModel->getAppezzamentoById($this->getParam("appezzamento"))->current();
