@@ -132,14 +132,9 @@ class AdminController extends Zend_Controller_Action
     public function inseriscinodoAction()
     {
         $this->_nodoForm = new Application_Form_Datinodo();
-        $this->_nodoForm->setAction($this->_helper->url->url(array(
-            'controller' => 'admin',
-            'action' => 'inseriscinodopost',
-            'uliveto' => $this->getParam("uliveto"),
-            'appezzamento' => $this->getParam("appezzamento")
-        ),
-            'default'
-        ));
+        $appezzamento = $this->getParam("appezzamento");
+        $uliveto = $this->getParam("uliveto");
+        $this->_nodoForm->setAction(Zend_Controller_Front::getInstance()->getBaseUrl() . '/admin/inseriscinodopost/uliveto/' . $uliveto . '/appezzamento/' . $appezzamento);
         return $this->_nodoForm;
     }
 
@@ -155,16 +150,13 @@ class AdminController extends Zend_Controller_Action
             return $this->render('inseriscinodo');
         }
         $datiform = $form->getValues(); //datiform è un array
-        $datiform['stato'] = 0;
+        $datiform['statonodo'] = 0;
         $datiform['indice-posizione'] = $_POST['indiceposizione'];
 
 
         $nodoModel = new Application_Model_NodoModel();
         $nodoModel->inserisci($datiform);
-        $_SESSION['uliveto'] = $this->getParam("uliveto");
-        $_SESSION['apprezzamento'] = $this->getParam("apprezzamento");
-        //$params = array('uliveto' => $this->getParam("uliveto"), 'appezzamento' => $this->getParam("appezzamento"));
-        $this->_helper->redirector('visualizzanodi', 'admin');
+        $this->redirect('/admin/visualizzanodi/uliveto/' . $this->getParam("uliveto") . '/appezzamento/' . $this->getParam("appezzamento"));
     }
 
     public function modificanodoAction()
@@ -176,12 +168,15 @@ class AdminController extends Zend_Controller_Action
             $sql = $nodomodel->getNodoById($id)->current()->toArray();
             $this->_nodoform->populate($sql);
         }
-        $this->_nodoform->setAction(Zend_Controller_Front::getInstance()->getBaseUrl() . '/admin/modificanodopost/id/' . $id);
+        $appezzamento = $this->getParam("appezzamento");
+        $uliveto = $this->getParam("uliveto");
+        $this->_nodoform->setAction(Zend_Controller_Front::getInstance()->getBaseUrl() . '/admin/modificanodopost/uliveto/' . $uliveto . '/appezzamento/' . $appezzamento . '/id/' . $id);
         $this->view->assign('nodoform', $this->_nodoform);
     }
 
     public function modificanodopostAction()
     {
+
         $request = $this->getRequest();
         $id = $this->getParam('id');
         if (!$request->isPost()) {
@@ -195,14 +190,12 @@ class AdminController extends Zend_Controller_Action
             return $this->render('modificanodo');
         } else {
             $datiform = $this->_nodoform->getValues();
-
+            $datiform['indice-posizione'] = $_POST['indiceposizione'];
             $nodomodel = new Application_Model_NodoModel();
 
             $nodomodel->modifica($datiform, $id);
-            $_SESSION['uliveto'] = $this->getParam("uliveto");
-            $_SESSION['apprezzamento'] = $this->getParam("apprezzamento");
             //$params = array('uliveto' => $this->getParam("uliveto"), 'appezzamento' => $this->getParam("appezzamento"));
-            $this->_helper->redirector('visualizzanodi');
+            $this->redirect('/admin/visualizzanodi/uliveto/' . $this->getParam("uliveto") . '/appezzamento/' . $this->getParam("appezzamento"));
         }
     }
 
@@ -212,7 +205,7 @@ class AdminController extends Zend_Controller_Action
         $nodomodel = new Application_Model_NodoModel();
         $nodomodel->elimina($id);
         $params = array('uliveto' => $this->getParam("uliveto"), 'appezzamento' => $this->getParam("appezzamento"));
-        $this->_helper->redirector('visualizzanodi', 'admin', $params);
+        $this->_helper->redirector('visualizzanodi', 'admin', 0, $params);
     }
 
     public function visualizzanodiAction()
@@ -221,11 +214,7 @@ class AdminController extends Zend_Controller_Action
             $nodoModel = new Application_Model_NodoModel();
 
             $this->view->elencoNodi = $nodoModel->getNodoByAppezzamento($this->getParam("appezzamento"));
-        } elseif (isset($_SESSION['uliveto']) && isset($_SESSION['apprezzamento'])) {
-            $nodoModel = new Application_Model_NodoModel();
-            $this->view->elencoNodi = $nodoModel->getNodoByAppezzamento($_SESSION['apprezzamento']);
-        }
-        else{
+        } else {
             $this->_helper->redirector('index', 'admin');
         }
         return;

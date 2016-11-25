@@ -30,13 +30,13 @@ $grigio = "color: #95a5a6";
                             "></i></td>
                     <td style="text-align:center;"><?php echo $nodo->idappezzamento ?></td>
                     <td style="text-align:center;"><i class="fa fa-circle" style="<?php
-                        if ($nodo->stato == 0)
+                        if ($nodo->statonodo == 0)
                             echo $verde;
-                        else if ($nodo->stato == 1)
+                        else if ($nodo->statonodo == 1)
                             echo $arancione;
-                        else if ($nodo->stato == 2)
+                        else if ($nodo->statonodo == 2)
                             echo $rosso;
-                        else if ($nodo->stato == 3)
+                        else if ($nodo->statonodo == 3)
                             echo $grigio;
                         ?>"></i></td>
                     <td style="text-align:center;">

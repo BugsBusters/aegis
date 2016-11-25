@@ -14,7 +14,6 @@ $grigio = "color: #95a5a6";
                 <th class="text-center">Gprs</th>
                 <th class="text-center">Appezzamento</th>
                 <th class="text-center">Stato</th>
-                <th class="text-center">Visualizza</th>
                 <th class="text-center">Modifica</th>
                 <th class="text-center">Elimina</th>
             </tr>
@@ -41,16 +40,6 @@ $grigio = "color: #95a5a6";
                         else if ($nodo->statonodo == 3)
                             echo $grigio;
                         ?>"></i></td>
-                    <td style="text-align:center;">
-                        <a href="<?php echo $this->url(array(
-                            "controller" => "admin",
-                            "action" => "visualizzanodo",
-                            "nodo"=> $nodo->idnodo),
-                            "default",true);
-                        ?>">
-                            <button class="btn btn-warning">Visualizza Nodo</button>
-                        </a>
-                    </td>
                     <td style="text-align:center;">
                         <a href="<?php echo $this->url(array(
                             "controller" => "admin",
