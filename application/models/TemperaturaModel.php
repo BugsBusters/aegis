@@ -9,9 +9,11 @@ class Application_Model_TemperaturaModel
         return $this->_tabella = new Application_Model_DbTable_Temperatura();
     }
 
-    public function gettemperaturabyid($id)
+    public function gettemperaturabyidNodo($id)
     {
-        return $this->_tabella->find($id);
+
+        $sql = $this->_tabella->select()->where("idnodo = ?",$id);
+        return $this->_tabella->fetchAll($sql);
     }
 
     public function inseriscitemperatura($dati)
@@ -45,11 +47,11 @@ class Application_Model_TemperaturaModel
         return ($somma / count($temperature));
     }
 
-    public function getTemperaturaGrafico()
+    public function getTemperaturaGrafico($idnodo)
     {
         //dati = [[new Date(2016, 07, 01),6],[new Date(2016, 07, 02),5]]
 
-        $elencoTemperature = $this->getTemperature();
+        $elencoTemperature = $this->gettemperaturabyidNodo($idnodo);
         $dati = "[";
         $totale = count($elencoTemperature);
         $i = 1;

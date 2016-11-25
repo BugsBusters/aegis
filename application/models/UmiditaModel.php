@@ -9,11 +9,9 @@ class Application_Model_UmiditaModel
         return $this->_tabella = new Application_Model_DbTable_Umidita();
     }
 
-    public function getumiditabyid($id)
-    {
-        $tabella = new Application_Model_DbTable_Umidita();
-        $array = $this->fetchAl($tabella->select()->where("idumidita =" . $id));
-        return $array;
+    public function getUmiditaByIdNodo($idnodo){
+        $sql = $this->_tabella->select()->where("idnodo = ?",$idnodo);
+        return $this->_tabella->fetchAll($sql);
     }
 
     public function inserisciumidita($dati)
@@ -48,11 +46,11 @@ class Application_Model_UmiditaModel
         return $media;
     }
 
-    public function getUmiditaGrafico()
+    public function getUmiditaGrafico($idnodo)
     {
         //dati = [[new Date(2016, 07, 01),6],[new Date(2016, 07, 02),5]]
 
-        $elencoUmidita = $this->getUmidita();
+        $elencoUmidita = $this->getUmiditaByIdNodo($idnodo);
         $dati = "[";
         $totale = count($elencoUmidita);
         $i = 1;
