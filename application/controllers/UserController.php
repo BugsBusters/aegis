@@ -23,8 +23,6 @@ class UserController extends Zend_Controller_Action
         $elencoOliveti = $olivetiModel->getUliveti();
         $this->view->elencoOliveti = $elencoOliveti;
 
-        $idnodo = $this->getParam("nodo");
-        $this->view->assign("currentPage", "index"); //mi serve per i grafici
 
         //dichiaro i model da usare
         $umiditaModel = new Application_Model_UmiditaModel();
@@ -36,13 +34,7 @@ class UserController extends Zend_Controller_Action
         $umiditaMedia = $umiditaModel->getUmiditaMedia();
         $temperaturaMedia = $temperaturaModel->getTemperaturaMedia();
         $contaMedia = $trappolaModel->getTrappolaMedia();
-
-        //dichiaro i grafici
-
-
-
-        $this->view->datiConta = $trappolaModel->getTrappolaGrafico($idnodo);
-
+        
         //assegno i risultati alla view
         $this->view->assign("umidita", $umiditaMedia);
         $this->view->assign("temperatura", $temperaturaMedia);
