@@ -61,7 +61,7 @@
                              aria-labelledby="dd-notification">
                             <div class="dropdown-menu-notif-header">
                                 Notifications
-                                <span class="label label-pill label-danger">4</span>
+
                             </div>
                             <div class="dropdown-menu-notif-list">
                                 <?php
@@ -69,14 +69,14 @@
                                 <div class="dropdown-menu-notif-item">
                                     <div class="dot"></div>
                                     <a href="#"><?php echo $notifiche->titolo; ?></a>
-
-                                    <div class="color-blue-grey-lighter"><?php echo $notifiche->ora; ?></div>
+                                    <div class="color-blue-grey-lighter"></div><?php echo $notifiche->ora; ?>
                                 </div>
                                 <?php endforeach; ?>
 
+
+                            </div>
                             <div class="dropdown-menu-notif-more">
-                                <a href="<?php echo $this->url(
-                                    array('controller' => $this->role, 'action' => 'notifiche')) ?>">See more</a>
+                                <a href="#">See more</a>
                             </div>
                         </div>
                     </div>
