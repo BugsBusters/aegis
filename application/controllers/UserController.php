@@ -7,6 +7,7 @@ class UserController extends Zend_Controller_Action
     protected $user;
     protected $_authService;
     protected $elenconotifiche;
+    protected $_formsensori;
 
     protected $_nodoForm = null;
 
@@ -25,6 +26,9 @@ class UserController extends Zend_Controller_Action
 
         $this->view->modificaprofiloform = $this->getModificaProfiloForm();
         $this->view->assign("ruolo",$this->user->ruolo);
+
+        $this->_formsensori = $this->getFormsensori();
+        $this->view->formsensori = $this->_formsensori;
 
 
     }
@@ -156,6 +160,39 @@ class UserController extends Zend_Controller_Action
             $this->view->datiConta = $datiTrappola;
         }
 
+    }
+
+    public function getFormsensori()
+    {
+        $urlHelper = $this->_helper->getHelper('url');
+        $formsensori = new Application_Form_Admin_Sensoriform();
+        $param= new Application_Model_ParametriModel();
+        $dati= $param->getparam()->toArray();
+        $formsensori->populate($dati[0]);
+        $formsensori->setAction($urlHelper->url(array(
+                'controller' => 'admin',
+                'action' => 'verificasensori')
+        ));
+        return $formsensori;
+    }
+    public function impostazionisensoriAction()
+    {
+    }
+    public function verificasensoriAction()
+    {
+        $request = $this->getRequest();
+        if (!$request->isPost())
+            return $this->_helper->redirector('impostazionisensori');
+        $form = $this->_formsensori;
+        if (!$form->isValid($request->getPost())) {
+            $form->setDescription('Attenzione: Alcuni dati inseriti sono non corretti');
+            return $this->render('impostazionisensori');
+        } else {
+            $dati = $this->_formsensori->getValues();
+            $param= new Application_Model_ParametriModel();
+            $param->modifica($dati);
+            return $this->_helper->redirector('index');
+        }
     }
 
 
