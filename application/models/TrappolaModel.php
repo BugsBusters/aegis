@@ -15,6 +15,11 @@ class Application_Model_TrappolaModel
         return $this->_tabella->find($id);
     }
 
+    public function getTrappolaByIdNodo($idnodo){
+        $sql = $this->_tabella->select()->where("idnodo = ?",$idnodo);
+        return $this->_tabella->fetchAll($sql);
+    }
+
     public function inseriscitrappola($dati)
     {
         return $this->insert($dati);
@@ -49,11 +54,11 @@ class Application_Model_TrappolaModel
 
     }
 
-    public function getTrappolaGrafico()
+    public function getTrappolaGrafico($idnodo)
     {
         //dati = [[new Date(2016, 07, 01),6],[new Date(2016, 07, 02),5]]
 
-        $elencoMosche = $this->getTrappole();
+        $elencoMosche = $this->getTrappolaByIdNodo($idnodo);
         $dati = "[";
         $totale = count($elencoMosche);
         $i = 1;

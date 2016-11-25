@@ -13,8 +13,6 @@ class UserController extends Zend_Controller_Action
     {
         $this->_authService = new Application_Service_Auth();
         $this->user = $this->_authService->getAuth()->getIdentity()->current();
-        $this->_nodoForm = $this->inseriscinodoAction();
-        $this->view->nodoForm = $this->_nodoForm;
 
     }
 
@@ -26,26 +24,17 @@ class UserController extends Zend_Controller_Action
         $this->view->elencoOliveti = $elencoOliveti;
 
 
-        $this->view->assign("currentPage", "index"); //mi serve per i grafici
-
         //dichiaro i model da usare
         $umiditaModel = new Application_Model_UmiditaModel();
         $temperaturaModel = new Application_Model_TemperaturaModel();
-        $datiTemperatura = $temperaturaModel->getTemperaturaGrafico();
-        $datiUmidita = $umiditaModel->getUmiditaGrafico();
-        $this->view->datitemperatura = $datiTemperatura;
-        $this->view->datiUmidita = $datiUmidita;
-
         $trappolaModel = new Application_Model_TrappolaModel();
-        $this->view->datiConta = $trappolaModel->getTrappolaGrafico();
-
-        //dati = [[new Date(2016, 07, 01),6],[new Date(2016, 07, 02),5]]
-
 
         //dichiaro le medie
+
         $umiditaMedia = $umiditaModel->getUmiditaMedia();
         $temperaturaMedia = $temperaturaModel->getTemperaturaMedia();
         $contaMedia = $trappolaModel->getTrappolaMedia();
+        
         //assegno i risultati alla view
         $this->view->assign("umidita", $umiditaMedia);
         $this->view->assign("temperatura", $temperaturaMedia);
@@ -87,7 +76,24 @@ class UserController extends Zend_Controller_Action
 
     public function visualizzanodoAction()
     {
-        // action body
+        if($this->hasParam("nodo")) {
+
+            $idnodo = $this->getParam("nodo");
+            $this->view->assign("currentPage", "index"); //mi serve per i grafici
+
+            $umiditaModel = new Application_Model_UmiditaModel();
+            $temperaturaModel = new Application_Model_TemperaturaModel();
+            $trappolaModel = new Application_Model_TrappolaModel();
+
+
+            $datiTemperatura = $temperaturaModel->getTemperaturaGrafico($idnodo);
+            $datiUmidita = $umiditaModel->getUmiditaGrafico($idnodo);
+            $datiTrappola = $trappolaModel->getTrappolaGrafico($idnodo);
+            $this->view->datitemperatura = $datiTemperatura;
+            $this->view->datiUmidita = $datiUmidita;
+            $this->view->datiConta = $datiTrappola;
+        }
+
     }
 
   

@@ -15,8 +15,6 @@ $grigio = "color: #95a5a6";
                 <th class="text-center">Appezzamento</th>
                 <th class="text-center">Stato</th>
                 <th class="text-center">Visualizza</th>
-                <th class="text-center">Modifica</th>
-                <th class="text-center">Elimina</th>
             </tr>
 
             <tbody>
@@ -51,43 +49,13 @@ $grigio = "color: #95a5a6";
                             <button class="btn btn-warning">Visualizza Nodo</button>
                         </a>
                     </td>
-                    <td style="text-align:center;">
-                        <a href="<?php echo $this->url(array(
-                            "controller" => "user",
-                            "action" => "modificanodo",
-                            "nodo"=> $nodo->idnodo),
-                            "default",true);
-                        ?>">
-                            <button class="btn btn-primary">Modifica Nodo</button>
-                        </a>
-                    </td>
-                    <td style="text-align:center;">
-                        <a href="<?php echo $this->url(array(
-                            "controller" => "user",
-                            "action" => "eliminanodo",
-                            "nodo"=> $nodo->idnodo),
-                            "default",true);
-                        ?>">
-                            <button class="btn btn-danger">Elimina Nodo</button>
-                        </a>
-                    </td>
+
+
                 </tr>
             <?php endforeach; ?>
             </tbody>
         </table>
         <br><br>
-        <div align="center">
-            <td style="text-align:center;">
-                <a href="<?php echo $this->url(array(
-                    "controller" => "user",
-                    "action" => "inseriscinodo")
-                    
-                    )
-                ?>">
-                    <button class="btn btn-success">Inserisci Nodo</button>
-                </a>
-            </td>
-        </div>
     </div>
 </div>
 
