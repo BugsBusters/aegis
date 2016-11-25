@@ -62,7 +62,7 @@ class Application_Form_Modificaprofilo extends App_Form_Abstract
         ));
 
 
-        $this->addElement('submit', 'modifica', array(
+        $this->addElement('submit', 'invia', array(
             'class' => 'btn btn-rounded dropdown-toggle',
         ));
 
@@ -84,7 +84,6 @@ class Application_Form_Modificaprofilo extends App_Form_Abstract
         $this->password->renderPassword = true;
         $this->password->setValue($dati['password']);
         
-
     }
 
 

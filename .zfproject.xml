@@ -15,6 +15,9 @@
           <actionMethod actionName="index"/>
           <actionMethod actionName="notifiche"/>
           <actionMethod actionName="gestioneutenti"/>
+          <actionMethod actionName="eliminautente"/>
+          <actionMethod actionName="modificautente"/>
+          <actionMethod actionName="inserisciutente"/>
         </controllerFile>
         <controllerFile controllerName="Login">
           <actionMethod actionName="index"/>
@@ -70,6 +73,15 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Admin">
             <viewScriptFile forActionName="gestioneutenti"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Admin">
+            <viewScriptFile forActionName="eliminautente"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Admin">
+            <viewScriptFile forActionName="modificautente"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Admin">
+            <viewScriptFile forActionName="inserisciutente"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

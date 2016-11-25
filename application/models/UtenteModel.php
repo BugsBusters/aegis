@@ -75,5 +75,10 @@ class Application_Model_UtenteModel
         $this->_tabella->update($data, $where);
     }
     
+    public function getAll(){
+        
+        return $this->_tabella->fetchAll();
+    }
+    
 }
 
