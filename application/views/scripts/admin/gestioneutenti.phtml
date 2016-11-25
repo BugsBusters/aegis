@@ -1,0 +1,63 @@
+<br /><br />
+
+<div id="view-content">
+	<div class="table-responsive">
+		<table class="table">
+
+			<thead>
+			<tr>
+				<td>Nome</td>
+				<td>Cognome</td>
+				<td>Username</td>
+				<td>Gestisci Utente</td>
+			</tr>
+			</thead>
+
+			<tbody>
+
+			<?php
+
+			foreach ($this->elenco_utenti as $utente) :
+				?>
+
+				<tr>
+					<td><?php echo $utente['nome']?></td>
+					<td><?php echo $utente['cognome']?></td>
+					<td><?php echo $utente['username']?></td>
+
+					<!-- bottoni -->
+					<td>
+						<a href="<?php echo $this->url(array(
+							"controller" => "admin",
+							"action" => "modificautente",
+							"idutente"=> $utente['idutente']),
+							"default",true)
+						?>">
+						<button type="button" class="btn btn-default">Modifica</button>
+						</a>
+						<a href="<?php echo $this->url(array(
+							"controller" => "admin",
+							"action" => "eliminautente",
+							"idutente"=> $utente['idutente']),
+							"default",true)
+						?>">
+							<button type="button" class="btn btn-danger">Elimina </button>
+						</a>
+					</td>
+				</tr>
+				<?php
+			endforeach ?>
+			</tbody>
+
+		</table>
+		<a href="<?php echo $this->url(array(
+			"controller" => "admin",
+			"action" => "inserisciutente"),
+			"default",true)
+		?>"><button type="button" class="btn btn-success">Inserisci un nuovo utente</button></a>
+	</div>
+
+
+
+</div>
+</div>
