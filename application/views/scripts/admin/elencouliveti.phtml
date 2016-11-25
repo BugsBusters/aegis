@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="row">
+
+        <?php foreach ($this->listauliveti as $uliveto) {
+            echo '<div class="col-sm-10"><a href="' . $this->baseUrl() . '/admin/elencoappezzamenti/id/' . $uliveto->iduliveto . '"><button style="margin:10px;background-color:#af7180;border-color:#af7180" type="button" class="btn btn-lg btn-block btn-rounded">'
+                . $uliveto->iduliveto . '. ' . $uliveto->descrizione . '</button></a></div>';
+            echo '<div class="col-sm-2">
+<a class="blacklink" href="' . $this->baseUrl() . '/admin/eliminauliveto/id/' . $uliveto->iduliveto . '">
+            <i class="fa fa-trash fa-2x pad"></i></a><a class="blacklink" href="' . $this->baseUrl() . '/admin/modificauliveto/id/' . $uliveto->iduliveto . '"><i style="padding-top:20px;" class="fa fa-pencil fa-2x"></i></a></div>';
+        }
+        ?>
+    </div>
+    <hr>
+    <a href="<?php echo $this->baseUrl() . '/admin/aggiungiuliveto'; ?>" class="btn btn-btn-block btn-rounded btn-primary">Aggiungi uliveto</a>
+
+</div>
+

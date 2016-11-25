@@ -8,6 +8,8 @@ class UserController extends Zend_Controller_Action
     protected $_authService;
     protected $elenconotifiche;
 
+    protected $_nodoForm = null;
+
     public function init()
     {
         $this->_helper->layout->setLayout('layout');
@@ -29,7 +31,28 @@ class UserController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        
+
+        $olivetiModel = new Application_Model_UlivetoModel();
+        $elencoOliveti = $olivetiModel->getUliveti();
+        $this->view->elencoOliveti = $elencoOliveti;
+
+
+        //dichiaro i model da usare
+        $umiditaModel = new Application_Model_UmiditaModel();
+        $temperaturaModel = new Application_Model_TemperaturaModel();
+        $trappolaModel = new Application_Model_TrappolaModel();
+
+        //dichiaro le medie
+
+        $umiditaMedia = $umiditaModel->getUmiditaMedia();
+        $temperaturaMedia = $temperaturaModel->getTemperaturaMedia();
+        $contaMedia = $trappolaModel->getTrappolaMedia();
+
+        //assegno i risultati alla view
+        $this->view->assign("umidita", $umiditaMedia);
+        $this->view->assign("temperatura", $temperaturaMedia);
+        $this->view->assign("conta", $contaMedia);
+
     }
 
     public function notificheAction()
@@ -64,7 +87,7 @@ class UserController extends Zend_Controller_Action
             'action' => 'verificamodificaprofilo'),
             'default'));
     }
-    
+
     public function verificamodificaprofiloAction(){
         $request = $this->getRequest();
         if (!$request->isPost()) {
@@ -86,16 +109,59 @@ class UserController extends Zend_Controller_Action
             }
             $authservice = new Application_Service_Auth();
             $authservice->getAuth()->getIdentity()->current()->username = $datiform['username'];
-            
+
             $utentimodel->updateUtente($datiform, $username);
             $this->getHelper('Redirector')->gotoSimple('index','user',$module=null);
 
         }
     }
 
+
+    public function visualizzaappezzamentiAction()
+    {
+        if ($this->hasParam("uliveto")) {
+            $appezzamentoModel = new Application_Model_AppezzamentoModel();
+            $this->view->elencoAppezzamenti = $appezzamentoModel->getAppezzamentoByUliveto($this->getParam("uliveto"));
+        } else
+            $this->redirect(array("index", "user"));
+    }
+
+    public function visualizzanodiAction()
+    {
+        if ($this->hasParam("uliveto") && $this->hasParam("appezzamento")) {
+            $nodoModel = new Application_Model_NodoModel();
+            $this->view->elencoNodi = $nodoModel->getNodoByAppezzamento($this->getParam("appezzamento"));
+        } else
+            //
+            return;
+    }
+
+    public function visualizzanodoAction()
+    {
+        if($this->hasParam("nodo")) {
+
+            $idnodo = $this->getParam("nodo");
+            $this->view->assign("currentPage", "index"); //mi serve per i grafici
+
+            $umiditaModel = new Application_Model_UmiditaModel();
+            $temperaturaModel = new Application_Model_TemperaturaModel();
+            $trappolaModel = new Application_Model_TrappolaModel();
+
+
+            $datiTemperatura = $temperaturaModel->getTemperaturaGrafico($idnodo);
+            $datiUmidita = $umiditaModel->getUmiditaGrafico($idnodo);
+            $datiTrappola = $trappolaModel->getTrappolaGrafico($idnodo);
+            $this->view->datitemperatura = $datiTemperatura;
+            $this->view->datiUmidita = $datiUmidita;
+            $this->view->datiConta = $datiTrappola;
+        }
+
+    }
+
+
+
+
 }
-
-
 
 
 

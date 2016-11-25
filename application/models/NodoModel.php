@@ -27,9 +27,13 @@ class Application_Model_NodoModel
         return $this->_tabella->delete("idnodo = " . $id);
     }
 
-    public function getNodoById($idnodo)
-    {
-        $sql = $this->_tabella->select()->where("idnodo = ?", $idnodo);
+    public function getNodoByAppezzamento($idappezzamento){
+        $sql = $this->_tabella->select()->where("idappezzamento = ?",$idappezzamento);
+        return $this->_tabella->fetchAll($sql);
+    }
+
+    public function getNodoById($id){
+        $sql = $this->_tabella->select()->where("idnodo = ?",$id);
         return $this->_tabella->fetchAll($sql);
     }
 

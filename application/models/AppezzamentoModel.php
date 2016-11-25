@@ -28,20 +28,20 @@ class Application_Model_AppezzamentoModel
         return $this->_tabella->delete("idappezzamento = " . $id);
     }
 
-    public function getAppezzamenti()
-    {
-        $sql = $this->_tabella->select();
-
-        return $this->_tabella->fetchAll($sql);
-    }
-
-
-    public function getAppezzamentoById($idappezz)
+    public function getAppezzamentoByUliveto($iduliveto)
     {
         $sql = $this->_tabella->select()
-            ->where("idappezzamento = ?", $idappezz);
-
+                              ->where("iduliveto = ?",$iduliveto);
         return $this->_tabella->fetchAll($sql);
     }
+
+    public function getAppezzamentoById($id){
+        return $this->_tabella->find($id);
+    }
+
+    public function getAppezzamenti(){
+        return $this->_tabella->fetchAll();
+    }
+
 }
 

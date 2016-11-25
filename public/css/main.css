@@ -7616,13 +7616,13 @@ hr.margin-4 {
 }
 
 .btn.btn-primary {
-    background-color: #00a8ff;
-    border-color: #00a8ff
+    background-color: #bfcc96;
+    border-color: #bfcc96
 }
 
 .btn.btn-primary:hover {
-    background-color: #16b4fc;
-    border-color: #16b4fc
+    background-color: #ebe7ce;
+    border-color: #ebe7ce
 }
 
 .btn.btn-secondary {
@@ -9776,12 +9776,22 @@ a.label-light-grey:hover {
     opacity: 1
 }
 
+.blacklink {
+    color: #0A0A0A;
+}
+
 .card-blue .card-header .modal-close:hover, .card-blue-fill .card-header .modal-close:hover, .card-green .card-header .modal-close:hover, .card-orange .card-header .modal-close:hover, .card-purple .card-header .modal-close:hover, .card-red .card-header .modal-close:hover {
     opacity: .75
 }
 
 .scrollable-block {
     overflow: auto
+}
+
+.pad{
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .scrollable-block.scrollable-gradient .jspContainer:after {

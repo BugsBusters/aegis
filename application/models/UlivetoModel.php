@@ -10,32 +10,27 @@ class Application_Model_UlivetoModel
         return $this->_tabella = new Application_Model_DbTable_Uliveto();
     }
 
-    public function getUliveti()
-    {
-        $sql = $this->_tabella->select();
-        return $this->_tabella->fetchAll($sql);
+    public function getUliveti(){
+        return $this->_tabella->fetchAll();
     }
-
 
     public function getulivetobyid($id)
     {
-
-        $sql = $this->_tabella->select()->where("iduliveto = ?", $id);
-        return $this->_tabella->fetchAll($sql);
+       return $this->_tabella->find($id);
     }
 
     public function inserisciuliveto($dati)
     {
-        return $this->insert($dati);
+        return $this->_tabella->insert($dati);
     }
 
     public function modificauliveto($dati, $id)
     {
-        return $this->update($dati, "iduliveto =" . $id);
+        return $this->_tabella->update($dati, "iduliveto = '$id'");
     }
 
     public function eliminauliveto($id)
     {
-        return $this->delete("iduliveto =" . $id);
+        return $this->_tabella->delete("iduliveto =  '$id'");
     }
 }

@@ -14,7 +14,6 @@
         <controllerFile controllerName="Admin">
           <actionMethod actionName="index"/>
           <actionMethod actionName="notifiche"/>
-          <actionMethod actionName="modificaprofilo"/>
         </controllerFile>
         <controllerFile controllerName="Login">
           <actionMethod actionName="index"/>
@@ -22,11 +21,19 @@
         <controllerFile controllerName="User">
           <actionMethod actionName="index"/>
           <actionMethod actionName="notifiche"/>
-          <actionMethod actionName="modificaprofilo"/>
+          <actionMethod actionName="getGraficoTemperatura"/>
+          <actionMethod actionName="visualizzaappezzamenti"/>
+          <actionMethod actionName="visualizzanodi"/>
+          <actionMethod actionName="visualizzanodo"/>
+          <actionMethod actionName="inseriscinodo"/>
+          <actionMethod actionName="inseriscinodopost"/>
+          <actionMethod actionName="modificanodo"/>
+          <actionMethod actionName="modificanodopost"/>
+          <actionMethod actionName="eliminanodo"/>
         </controllerFile>
       </controllersDirectory>
       <formsDirectory enabled="false">
-        <formFile formName="Modificaprofilo"/>
+        <formFile formName="Datinodo"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
@@ -72,10 +79,31 @@
             <viewScriptFile forActionName="notifiche"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="User">
-            <viewScriptFile forActionName="modificaprofilo"/>
+            <viewScriptFile forActionName="getGraficoTemperatura"/>
           </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Admin">
-            <viewScriptFile forActionName="modificaprofilo"/>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="visualizzaappezzamenti"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="visualizzanodi"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="visualizzanodo"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="inseriscinodo"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="inseriscinodopost"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="modificanodo"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="modificanodopost"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="eliminanodo"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
