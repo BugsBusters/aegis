@@ -1,6 +1,6 @@
 <div class="container" align="center">
     <h4>Aggiungi un' appezzamento</h4>
-    <?php echo $this->formappezzamenti ;?>
+    <?php echo $this->formappezzamenti; ?>
 </div>
 
 <hr>
@@ -13,17 +13,25 @@
             <th class="text-center">id uliveto</th>
             <th class="text-center">id appezzamento</th>
             <th class="text-center">nota</th>
+            <th class="text-center">elimina</th>
         </tr>
 
         <tbody>
-        <?php foreach ($this->elencoappezzamenti as $appezz):?>
-            <?php foreach ($this->desculiveti as $desculiv):?>
-            <tr>
-                <td><?php echo $this->desculiveti[$appezz['iduliveto']];?></td>
-                <td><?php echo $appezz['idappezzamento']?></td>
-                <td><?php echo $appezz['note']?></td>
-            </tr>
-        <?php endforeach; endforeach;?>
+        <?php foreach ($this->elencoappezzamenti as $appezz): ?>
+            <?php foreach ($this->desculiveti as $desculiv): ?>
+                <tr>
+                    <td><?php echo $this->desculiveti[$appezz['iduliveto']]; ?></td>
+                    <td><?php echo $appezz['idappezzamento'] ?></td>
+                    <td><?php echo $appezz['note'] ?></td>
+                    <td><a class="btn btn-rounded"
+                           href="<?php echo $this->url(array('controller' => 'admin',
+                               'action' => 'eliminaappezzamento',
+                               'id' => $appezz['idappezzamento'],
+                           ),
+                               'default'
+                           ); ?>">elimina</a></td>
+                </tr>
+            <?php endforeach; endforeach; ?>
         </tbody>
     </table>
 </div>

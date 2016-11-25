@@ -57,14 +57,7 @@ class AdminController extends Zend_Controller_Action
         $this->view->desculiveti = $iduliveti;
 
     }
-
-
-    public function aggiungiulivetoAction()
-    {
-        $this->_ulivetoform->setAction(Zend_Controller_Front::getInstance()->getBaseUrl() . '/admin/validateuliveto');
-        $this->view->assign('aggiungiform', $this->_ulivetoform);
-    }
-
+    
     public function validateulivetoAction()
     {
         $request = $this->getRequest();
@@ -90,7 +83,7 @@ class AdminController extends Zend_Controller_Action
 
     }
 
-    public function eliminaulivetoAction()
+    public function eliminaappezzamentoAction()
     {
         $id = $this->getParam('id');
         if (!is_null($id)) {
