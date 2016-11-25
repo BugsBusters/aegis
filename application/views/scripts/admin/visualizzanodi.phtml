@@ -32,18 +32,18 @@ $grigio = "color: #95a5a6";
                             "></i></td>
                     <td style="text-align:center;"><?php echo $nodo->idappezzamento ?></td>
                     <td style="text-align:center;"><i class="fa fa-circle" style="<?php
-                        if ($nodo->stato == 0)
+                        if ($nodo->statonodo == 0)
                             echo $verde;
-                        else if ($nodo->stato == 1)
+                        else if ($nodo->statonodo == 1)
                             echo $arancione;
-                        else if ($nodo->stato == 2)
+                        else if ($nodo->statonodo == 2)
                             echo $rosso;
-                        else if ($nodo->stato == 3)
+                        else if ($nodo->statonodo == 3)
                             echo $grigio;
                         ?>"></i></td>
                     <td style="text-align:center;">
                         <a href="<?php echo $this->url(array(
-                            "controller" => "user",
+                            "controller" => "admin",
                             "action" => "visualizzanodo",
                             "nodo"=> $nodo->idnodo),
                             "default",true);
@@ -53,20 +53,20 @@ $grigio = "color: #95a5a6";
                     </td>
                     <td style="text-align:center;">
                         <a href="<?php echo $this->url(array(
-                            "controller" => "user",
+                            "controller" => "admin",
                             "action" => "modificanodo",
-                            "nodo"=> $nodo->idnodo),
-                            "default",true);
+                            "nodo"=> $nodo->idnodo)
+                            );
                         ?>">
                             <button class="btn btn-primary">Modifica Nodo</button>
                         </a>
                     </td>
                     <td style="text-align:center;">
                         <a href="<?php echo $this->url(array(
-                            "controller" => "user",
+                            "controller" => "admin",
                             "action" => "eliminanodo",
-                            "nodo"=> $nodo->idnodo),
-                            "default",true);
+                            "nodo"=> $nodo->idnodo)
+                            );
                         ?>">
                             <button class="btn btn-danger">Elimina Nodo</button>
                         </a>
@@ -79,7 +79,7 @@ $grigio = "color: #95a5a6";
         <div align="center">
             <td style="text-align:center;">
                 <a href="<?php echo $this->url(array(
-                    "controller" => "user",
+                    "controller" => "admin",
                     "action" => "inseriscinodo")
                     
                     )

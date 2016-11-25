@@ -29,6 +29,10 @@ class Application_Model_NodoModel
         return $this->_tabella->fetchAll($sql);
     }
 
+    public function getNodoById($id){
+        $sql = $this->_tabella->select()->where("idnodo = ?",$id);
+        return $this->_tabella->fetchAll($sql);
+    }
 
 }
 

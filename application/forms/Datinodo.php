@@ -32,7 +32,8 @@ class Application_Form_Datinodo extends Zend_Form
         $this->addElement('select', 'idappezzamento', array(
             'required' => true,
             'multiOptions' => $categories,
-            'class' => 'form-control'
+            'class' => 'form-control',
+            'label' => 'Appezzamento:'
         ));
 
         $this->addElement('submit', 'Invia', array(
