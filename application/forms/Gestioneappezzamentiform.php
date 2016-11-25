@@ -1,11 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: edoardo
- * Date: 25/11/2016
- * Time: 02:01
- */
+
 class Application_Form_Gestioneappezzamentiform extends App_Form_Abstract
 {
 
@@ -35,8 +30,22 @@ class Application_Form_Gestioneappezzamentiform extends App_Form_Abstract
 
         $this->addElement('select', 'iduliveto', array(
             'label' => 'uliveto',
+            'required' => true,
             'multiOptions' => $iduliveti,
+            'class' => 'form-control'
         ));
+
+        $this->addElement('submit', 'Aggiungi', array(
+            'class' => 'btn btn-rounded dropdown-toggle',
+        ));
+
+        $this->setDecorators(array(
+            'FormElements',
+            array('HtmlTag', array('tag' => 'a', 'class' => 'zend_form')),
+            array('Description', array('placement' => 'prepend', 'class' => 'formerror')),
+            'Form'
+        ));
+
 
 
     }

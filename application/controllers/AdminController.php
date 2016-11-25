@@ -13,7 +13,7 @@ class AdminController extends Zend_Controller_Action
     public function init()
     {
         $this->_formappezzamenti = new Application_Form_Gestioneappezzamentiform();
-        $this->view->formappezzamenti = $this->_formappezzamenti;
+        $this->view->formappezzamenti = $this->getFormAppezzamenti();
         $this->_authService = new Application_Service_Auth();
 
         $this->_helper->layout->setLayout('layout');
@@ -68,6 +68,23 @@ class AdminController extends Zend_Controller_Action
         }
         $this->view->desculiveti = $iduliveti;
 
+    }
+
+    public function getModificaProfiloForm() {
+        $this->modificaprofiloform = new Application_Form_Modificaprofilo();
+        $this->view->modificaform = $this->modificaprofiloform;
+
+        $form = $this->modificaprofiloform;
+        $usermodel=new Application_Model_UtenteModel();
+        $dati=$usermodel->getUserByUser($this->user->username)->toArray();
+        $form->populate($dati[0]);
+
+        $urlHelper = $this->_helper->getHelper('url');
+
+        $this->view->modificaform->setAction($urlHelper->url(array(
+            'controller' => 'user',
+            'action' => 'verificamodificaprofilo'),
+            'default'));
     }
 
 
