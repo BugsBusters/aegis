@@ -12,7 +12,6 @@ class AdminController extends Zend_Controller_Action
 
     public function init()
     {
-        $this->_formappezzamenti = new Application_Form_Gestioneappezzamentiform();
         $this->view->formappezzamenti = $this->getFormAppezzamenti();
         $this->_authService = new Application_Service_Auth();
 
@@ -51,6 +50,41 @@ class AdminController extends Zend_Controller_Action
 
     }
 
+    public function getFormAppezzamenti(){
+        $urlHelper = $this->_helper->getHelper('url');
+        $this->_formappezzamenti = new Application_Form_Gestioneappezzamentiform();
+
+
+        $this->_formappezzamenti->setAction($urlHelper->url(array(
+            'controller' => 'admin',
+            'action' => 'verificaaggiuntaappezzamento'),
+            'default'));
+
+        return $this->_formappezzamenti;
+    }
+
+    public function verificaaggiuntaappezzamentoAction()
+    {
+        $request = $this->getRequest();
+        if (!$request->isPost()) {
+            return $this->_helper->redirector('gestioneappezzamenti');
+        }
+        $form = $this->_formappezzamenti;
+        if (!$form->isValid($request->getPost())) {
+            $form->setDescription('Attenzione: alcuni dati inseriti sono errati.');
+            return $this->render('gestioneappezzamenti');
+        } else {
+            $datiform = $form->getValues();
+
+            $appezzamentoModel = new Application_Model_AppezzamentoModel();
+
+
+            $appezzamentoModel->inserisci($datiform);
+            $this->getHelper('Redirector')->gotoSimple('gestioneappezzamenti', 'admin', $module = null);
+
+        }
+    }
+
     public function gestioneappezzamentiAction()
     {
         $appezzamentimodel = new Application_Model_AppezzamentoModel();
@@ -58,8 +92,6 @@ class AdminController extends Zend_Controller_Action
 
         $ulivetimodel = new Application_Model_UlivetoModel();
         $uliveti = $ulivetimodel->getUliveti();
-
-
 
         //per far passare alla view la descrizione dell' uliveto
         $iduliveti = array();
@@ -133,22 +165,6 @@ class AdminController extends Zend_Controller_Action
         // action body
     }
 
-    public function getModificaProfiloForm() {
-        $this->modificaprofiloform = new Application_Form_Modificaprofilo();
-        $this->view->modificaform = $this->modificaprofiloform;
-
-        $form = $this->modificaprofiloform;
-        $usermodel=new Application_Model_UtenteModel();
-        $dati=$usermodel->getUserByUser($this->user->username)->toArray();
-        $form->populate($dati[0]);
-
-        $urlHelper = $this->_helper->getHelper('url');
-
-        $this->view->modificaform->setAction($urlHelper->url(array(
-            'controller' => 'user',
-            'action' => 'verificamodificaprofilo'),
-            'default'));
-    }
 
     public function verificamodificaprofiloAction(){
         $request = $this->getRequest();
