@@ -120,8 +120,58 @@ class AdminController extends Zend_Controller_Action
            
             $ulivetomodel->modificauliveto($datiform, $id);
             $this->getHelper('Redirector')->gotoSimple('elencouliveti','admin', $module = null);
-        }
+        }}
 
+        public function inseriscinodoAction()
+     {
+         $this->_nodoForm = new Application_Form_Datinodo();
+                    $this->_nodoForm->setAction($this->_helper->url->url(array(
+                                'controller' => 'user',
+                                'action' => 'inseriscinodopost',
+                                'uliveto' => $this->getParam("uliveto"),
+                                'appezzamento' => $this->getParam("appezzamento")
+                                    ),
+             'default'
+                        ));
+         return $this->_nodoForm;
+     }
+
+     public function inseriscinodopostAction()
+     {
+                    $request = $this->getRequest(); //vede se esiste una richiesta
+                    if (!$request->isPost()) { //controlla che sia stata passata tramite post
+                            return $this->_helper->redirector('inseriscinodo'); // se non c'è un passaggio tramite post, reindirizza all' inseriscicentroAction
+         }
+         $form=$this->_nodoForm;
+         if (!$form->isValid($request->getPost())) {
+                            $form->setDescription('Attenzione: alcuni dati inseriti sono errati.');
+                            return $this->render('inseriscinodo');
+         }
+        $datiform=$form->getValues(); //datiform è un array
+         $datiform['stato']=0;
+         $datiform['indice-posizione']=$_POST['indiceposizione'];
+
+
+        $nodoModel = new Application_Model_NodoModel();
+        $nodoModel->inserisci($datiform);
+        $params = array('uliveto' => $this->getParam("uliveto"), 'appezzamento' => $this->getParam("appezzamento"));
+        $this->_helper->redirector('visualizzanodi','user' ,null, $params);
+    }
+
+   public function modificanodoAction()
+   {
+                   // action body
+               }
+
+    public function modificanodopostAction()
+     {
+                   // action body
+              }
+
+     public function eliminanodoAction()
+     {
+                   // action body
+                }
     }
 }
 
