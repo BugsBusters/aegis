@@ -23,13 +23,13 @@
                     <td><?php echo $this->desculiveti[$appezz['iduliveto']]; ?></td>
                     <td><?php echo $appezz['idappezzamento'] ?></td>
                     <td><?php echo $appezz['note'] ?></td>
-                    <td><a class="btn btn-rounded"
+                    <td><a class="btn btn-rounded" style="background-color: #dbe4ea; border-color: #dbe4ea; color: #6c7a86;"
                            href="<?php echo $this->url(array('controller' => 'admin',
                                'action' => 'eliminaappezzamento',
                                'id' => $appezz['idappezzamento'],
                            ),
                                'default'
-                           ); ?>">elimina</a></td>
+                           ); ?>">Elimina</a></td>
                 </tr>
             <?php endforeach; endforeach; ?>
         </tbody>
