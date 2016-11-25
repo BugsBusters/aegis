@@ -216,13 +216,13 @@
 	}
 
 	.Green .ct-preFooter .ct-preFooter-mainList > li a:hover {
-	color: #99cd4d;
+	color: #BFCC94
 	}
 	.Green .ct-preFooter .ct-preFooter-mainList > li a i {
-	color: #99cd4d;
+	color: #BFCC94;
 	}
 	.Green .ct-postFooter {
-	background-color: #99cd4d;
+	background-color: #BFCC94;
 	}
 
 	.Green .btn.ct-btn-image.btn-motive:before{
