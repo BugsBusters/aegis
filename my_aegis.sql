@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Nov 24, 2016 alle 20:16
+-- Creato il: Nov 25, 2016 alle 08:35
 -- Versione del server: 10.1.16-MariaDB
 -- Versione PHP: 5.6.24
 
@@ -29,9 +29,32 @@ SET time_zone = "+00:00";
 CREATE TABLE `appezzamento` (
   `idappezzamento` int(3) NOT NULL,
   `iduliveto` int(3) NOT NULL,
+  `nome` varchar(50) COLLATE utf8_bin NOT NULL,
   `note` text COLLATE utf8_bin NOT NULL,
   `mappa` varchar(200) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dump dei dati per la tabella `appezzamento`
+--
+
+INSERT INTO `appezzamento` (`idappezzamento`, `iduliveto`, `nome`, `note`, `mappa`) VALUES
+(1, 1, 'Appezzamento A', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in congue arcu. Sed ac porta quam. Vivamus dapibus placerat orci, a sodales ex sagittis in. Fusce quam lectus, condimentum quis sapien ac, dictum sollicitudin lorem. Sed convallis urna in porta laoreet. Phasellus suscipit sed ligula eget pretium. Duis dictum placerat convallis. Etiam mollis, justo nec lobortis egestas, ligula diam egestas elit, quis ornare libero tellus at turpis. Sed lacinia finibus felis sit amet scelerisque. Integer finibus ultricies blandit. Nunc tempor pulvinar faucibus. Integer faucibus nisl sed diam volutpat accumsan. Fusce quis maximus nibh. Curabitur vitae pellentesque mi, id auctor enim. Mauris in mi ut mi consectetur commodo. In eros erat, ornare molestie tincidunt dignissim, maximus sed lacus.', 'img/campoQuadrato.html'),
+(2, 1, 'Appezzamento B', '0', 'mappa');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura stand-in per le viste `checkcomponenti`
+-- (Vedi sotto per la vista effettiva)
+--
+CREATE TABLE `checkcomponenti` (
+`stato` int(11)
+,`descrizione` varchar(50)
+,`idnodo` int(3)
+,`idappezzamento` int(3)
+,`iduliveto` int(3)
+);
 
 -- --------------------------------------------------------
 
@@ -52,11 +75,23 @@ CREATE TABLE `componente` (
 
 CREATE TABLE `nodo` (
   `idnodo` int(3) NOT NULL,
-  `stato` int(1) NOT NULL,
+  `statonodo` int(1) NOT NULL,
   `indice-posizione` varchar(1) COLLATE utf8_bin NOT NULL,
   `gprs` tinyint(1) NOT NULL,
   `idappezzamento` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dump dei dati per la tabella `nodo`
+--
+
+INSERT INTO `nodo` (`idnodo`, `statonodo`, `indice-posizione`, `gprs`, `idappezzamento`) VALUES
+(4, 0, 'B', 1, 2),
+(10, 0, 'C', 1, 2),
+(11, 0, 'C', 1, 1),
+(12, 0, 'A', 0, 1),
+(13, 0, 'A', 1, 1),
+(15, 0, 'A', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -81,17 +116,17 @@ CREATE TABLE `notifica` (
 
 CREATE TABLE `parametri` (
   `idparametro` int(11) NOT NULL,
-  `descrizione` varchar(50) COLLATE utf8_bin NOT NULL,
-  `valore` int(11) NOT NULL
+  `limite-umidita` int(11) NOT NULL,
+  `limite-mosche` int(11) NOT NULL,
+  `limite-temperatura` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dump dei dati per la tabella `parametri`
 --
 
-INSERT INTO `parametri` (`idparametro`, `descrizione`, `valore`) VALUES
-(1, 'temperatura', 40),
-(2, 'umidita', 100);
+INSERT INTO `parametri` (`idparametro`, `limite-umidita`, `limite-mosche`, `limite-temperatura`) VALUES
+(1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -114,7 +149,7 @@ CREATE TABLE `possesso` (
 
 CREATE TABLE `temperatura` (
   `idtemperatura` int(3) NOT NULL,
-  `data` int(11) NOT NULL,
+  `data` datetime NOT NULL,
   `temperatura` int(11) NOT NULL,
   `idnodo` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -142,6 +177,13 @@ CREATE TABLE `uliveto` (
   `iduliveto` int(3) NOT NULL,
   `descrizione` varchar(50) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dump dei dati per la tabella `uliveto`
+--
+
+INSERT INTO `uliveto` (`iduliveto`, `descrizione`) VALUES
+(1, 'Uliveto di prove');
 
 -- --------------------------------------------------------
 
@@ -178,6 +220,15 @@ CREATE TABLE `utente` (
 INSERT INTO `utente` (`idutente`, `nome`, `cognome`, `ruolo`, `username`, `password`) VALUES
 (2, '', '', 'user', 'user', 'user'),
 (3, '', '', 'admin', 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura per la vista `checkcomponenti`
+--
+DROP TABLE IF EXISTS `checkcomponenti`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `checkcomponenti`  AS  select `p`.`stato` AS `stato`,`c`.`descrizione` AS `descrizione`,`n`.`idnodo` AS `idnodo`,`a`.`idappezzamento` AS `idappezzamento`,`u`.`iduliveto` AS `iduliveto` from ((((`possesso` `p` join `nodo` `n` on((`p`.`idnodo` = `n`.`idnodo`))) join `appezzamento` `a` on((`a`.`idappezzamento` = `n`.`idappezzamento`))) join `uliveto` `u` on((`u`.`iduliveto` = `a`.`iduliveto`))) join `componente` `c` on((`c`.`idcomponente` = `p`.`idcomponente`))) where (`p`.`stato` = 1) ;
 
 --
 -- Indici per le tabelle scaricate
@@ -265,7 +316,7 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `appezzamento`
 --
 ALTER TABLE `appezzamento`
-  MODIFY `idappezzamento` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `idappezzamento` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT per la tabella `componente`
 --
@@ -275,7 +326,7 @@ ALTER TABLE `componente`
 -- AUTO_INCREMENT per la tabella `nodo`
 --
 ALTER TABLE `nodo`
-  MODIFY `idnodo` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `idnodo` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT per la tabella `notifica`
 --
@@ -295,22 +346,22 @@ ALTER TABLE `possesso`
 -- AUTO_INCREMENT per la tabella `temperatura`
 --
 ALTER TABLE `temperatura`
-  MODIFY `idtemperatura` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `idtemperatura` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT per la tabella `trappola`
 --
 ALTER TABLE `trappola`
-  MODIFY `idtrappola` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `idtrappola` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT per la tabella `uliveto`
 --
 ALTER TABLE `uliveto`
-  MODIFY `iduliveto` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `iduliveto` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT per la tabella `umidita`
 --
 ALTER TABLE `umidita`
-  MODIFY `idumidita` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `idumidita` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT per la tabella `utente`
 --
