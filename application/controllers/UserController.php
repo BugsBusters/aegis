@@ -65,7 +65,7 @@ class UserController extends Zend_Controller_Action
         $notificheModel = new Application_Model_NotificaModel();
 
         $arraynotifiche = $notificheModel->getNotifichebyIdUtente($this->user->idutente);
-
+        
         $this->view->arraynotifiche = $arraynotifiche;
         $this->view->utente = $this->user->username;
     }

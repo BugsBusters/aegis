@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="<?php echo $this->baseUrl("css/lib/bootstrap/bootstrap.min.css"); ?>">
     <link rel="stylesheet" href="<?php echo $this->baseUrl("css/main.css"); ?>">
     <link rel="stylesheet" href="<?php echo $this->baseUrl("css/select2.min.css"); ?>">
+    <link rel="stylesheet" href="<?php echo $this->baseUrl("css/separate/pages/gallery.min.css"); ?>">
 </head>
 <body class="with-side-menu control-panel control-panel-compact">
 
@@ -65,12 +66,10 @@
 
                             </div>
                             <div class="dropdown-menu-notif-list">
-                                <?php
+                                <?php 
                                 foreach ($this->elenconotifiche as $notifiche): ?>
                                     <div class="dropdown-menu-notif-item">
-                                        <div class="photo">
-                                            <img src="img/photo-64-1.jpg" alt="">
-                                        </div>
+                                        
                                         <div class="dot"></div>
                                         <a href="#"><?php echo $notifiche->titolo; ?></a>
                                         <div class="color-blue-grey-lighter"></div><?php echo $notifiche->ora; ?>
@@ -93,7 +92,7 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
                             <a class="dropdown-item" href="<?php echo $this->url(
-                                array('controller' => $this->role, 'action' => 'modificaprofilo')) ?>"><span
+                                array('controller' => $this->role, 'action' => 'modificaprofilo'),null,true) ?>"><span
                                     class="font-icon glyphicon glyphicon-user"></span>Modifica
                                 Profilo</a>
                             <div class="dropdown-divider"></div>
@@ -119,15 +118,17 @@
     <ul class="side-menu-list">
         <?php if($this->ruolo == "user"):?>
         <li class="giulia-pink">
+            <a href="<?php echo $this->url(array("controller" => "user", "action" => "index"),null,true); ?>">
 	            <span>
 	                <i class="font-icon font-icon-dashboard"></i>
 	                <span class="lbl">Dashboard</span>
 	            </span>
+              </a>
         </li>
 
         <li class="giulia-beige">
             <a href="<?php echo $this->url(
-                array('controller' => $this->role, 'action' => 'modificaprofilo')) ?>">
+                array('controller' => $this->role, 'action' => 'modificaprofilo'),null,true) ?>">
                    <span>
                         <i class="font-icon font-icon-user"></i>
                         <span class="lbl">Modifica Profilo</span>
@@ -135,7 +136,7 @@
             </a>
         </li>
         <li class="orange-red">
-            <a href="<?php echo $this->url(array("controller" => "user", "action" => "impostazionisensori")); ?>">
+            <a href="<?php echo $this->url(array("controller" => "user", "action" => "impostazionisensori"),null,true); ?>">
                 <span>
 	                <i class="fa fa-cogs"></i>
                     <span class="lbl">Impostazioni sensori</span>
@@ -146,7 +147,7 @@
         <!-- menu admin -->
 
         <li class="orange-red">
-            <a href="<?php echo $this->url(array("controller" => "admin", "action" => "elencouliveti")); ?>">
+            <a href="<?php echo $this->url(array("controller" => "admin", "action" => "elencouliveti"),null,true); ?>">
 	            <span>
 	                <i class="fa fa-pagelines"></i>
 	                <span class="lbl">Gestione Uliveti</span>
