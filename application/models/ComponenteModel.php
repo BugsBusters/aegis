@@ -16,13 +16,23 @@ class Application_Model_ComponenteModel
         return $this->_tabella->insert($dati);
     }
 
-    public function modifica($dati,$id){
+    public function modifica($dati, $id)
+    {
 
-        return $this->_tabella->update($dati,"idcomponente = ".$id);
+        return $this->_tabella->update($dati, "idcomponente = " . $id);
     }
 
-    public function elimina($id){
-        return $this->_tabella->delete("idcomponente = ".$id);
+    public function elimina($id)
+    {
+        return $this->_tabella->delete("idcomponente = " . $id);
+    }
+
+    public function getComponenteById($idcomponente)
+    {
+        $sql = $this->_tabella->select()
+            ->where("stato = ?", $idcomponente);
+
+        return $this->_tabella->fetchAll($sql);
     }
 }
 

@@ -67,6 +67,9 @@
                                 <?php
                                 foreach ($this->elenconotifiche as $notifiche): ?>
                                 <div class="dropdown-menu-notif-item">
+                                    <div class="photo">
+                                        <img src="img/photo-64-1.jpg" alt="">
+                                    </div>
                                     <div class="dot"></div>
                                     <a href="#"><?php echo $notifiche->titolo; ?></a>
                                     <div class="color-blue-grey-lighter"></div><?php echo $notifiche->ora; ?>
@@ -148,7 +151,7 @@
 	            </span>
             <ul>
                 <li><a href="documentation.html"><span class="lbl">Gestione uliveti</span></a></li>
-                <li><a href="faq.html"><span class="lbl">Gestione appezzamenti</span></a></li>
+                <li><a href="<?php echo $this->url(array("controller" => "admin", "action" => "gestioneappezzamenti"));?>"><span class="lbl">Gestione appezzamenti</span></a></li>
                 <li><a href="faq-search.html"><span class="lbl">Gestioni modi</span></a></li>
             </ul>
         </li>
@@ -161,7 +164,13 @@
         </li>
 
         <li class="giulia-pink">
-            <a href="scheduler.html">
+            <a href="<?php
+            echo $this->url(
+                array(
+                    'controller' => 'admin',
+                    'action' => 'gestionemalfunzionamenti',
+                ), null, true
+            ) ?>">
                 <i class="font-icon font-icon-help"></i>
                 <span class="lbl">Gestione malfunziamenti</span>
             </a>

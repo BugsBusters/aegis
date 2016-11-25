@@ -1,0 +1,23 @@
+<div class="text-center">
+    <h4 class="">Segnalazione Componenti danneggiate</h4>
+    <table class="table table-striped">
+
+        <tr class="bg-danger">
+            <th class="text-center">descrizione</th>
+            <th class="text-center">id nodo</th>
+            <th class="text-center">id appezzamento</th>
+            <th class="text-center">id uliveto</th>
+        </tr>
+
+        <tbody>
+        <?php foreach ($this->componentimalfunz as $comp):?>
+        <tr>
+            <td><?php echo $comp['descrizione']?></td>
+            <td><?php echo $comp['idnodo']?></td>
+            <td><?php echo $comp['idappezzamento']?></td>
+            <td><?php echo $comp['iduliveto']?></td>
+        </tr>
+        <?php endforeach;?>
+        </tbody>
+    </table>
+</div>
