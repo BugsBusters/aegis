@@ -23,6 +23,7 @@ class Application_Model_ParametriModel
     public function elimina($id){
         
         return $this->_tabella->delete("idparametri = ".$id);
+
     }
 
 

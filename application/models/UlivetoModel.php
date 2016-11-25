@@ -11,15 +11,12 @@ class Application_Model_UlivetoModel
     }
 
     public function getUliveti(){
-        $sql= $this->_tabella->select();
-        return $this->_tabella->fetchAll($sql);
+        return $this->_tabella->fetchAll();
     }
-    
+
     public function getulivetobyid($id)
     {
-
-        $sql= $this->_tabella->select()->where("iduliveto = ?", $id);
-        return $this->_tabella->fetchAll($sql);
+       return $this->_tabella->find($id);
     }
 
     public function inserisciuliveto($dati)
@@ -29,11 +26,11 @@ class Application_Model_UlivetoModel
 
     public function modificauliveto($dati, $id)
     {
-        return $this->_tabella->update($dati, "iduliveto =".$id);
+        return $this->_tabella->update($dati, "iduliveto = '$id'");
     }
 
     public function eliminauliveto($id)
     {
-        return $this->_tabella->delete("iduliveto =" . $id);
+        return $this->_tabella->delete("iduliveto =  '$id'");
     }
 }

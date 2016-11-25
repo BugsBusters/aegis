@@ -1,4 +1,93 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>User</b> and script/action name <b>index</b></p>
+<div class="row">
+
+    <div class="col-xl-12">
+        <div class="row">
+            <div class="col-sm-4">
+                <article class="statistic-box red">
+                    <div>
+                        <div class="number"><?php echo $this->temperatura . " °"; ?></div>
+                        <div class="caption">
+                            <div>Temperatura media</div>
+                        </div>
+                    </div>
+                </article>
+            </div><!--.col-->
+            <div class="col-sm-4">
+                <article class="statistic-box purple">
+                    <div>
+                        <div class="number"><?php echo $this->umidita . " %"; ?></div>
+                        <div class="caption">
+                            <div>Umidità media</div>
+                        </div>
+                    </div>
+                </article>
+            </div><!--.col-->
+            <div class="col-sm-4">
+                <article class="statistic-box yellow">
+                    <div>
+                        <div class="number"><?php echo $this->conta; ?></div>
+                        <div class="caption">
+                            <div>Media della conta delle mosche</div>
+                        </div>
+                    </div>
+                </article>
+            </div><!--.col-->
+
+        </div><!--.row-->
+    </div><!--.col-->
+
+</div><!--.row-->
+<div class="row">
+    <?php foreach ($this->elencoOliveti as $oliveto): ?>
+        <div class="col-md-6" style="background-color:white">
+            <?php echo $oliveto->descrizione; ?>
+            <br>
+            <a href="<?php echo $this->url(array(
+                "controller" => "user",
+                "action" => "visualizzaappezzamenti",
+                "uliveto" => $oliveto->iduliveto,
+            ),
+                "default", true);
+            ?>">
+                <button class="btn btn-primary">Visualizza Appezzamenti</button>
+            </a>
+        </div>
+    <?php endforeach; ?>
+
+    <!-- GESTIONE GRAFICI
+    <div class="col-md-12">
+        <div class="card" id="graphs">
+            <div class="card-block">
+                <div class="m-b-1">
+
+                    <h6>Conta delle mosche</h6></div>
+                <div id="mosche"class="dashboard-line chart" style="height:300px"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="card" id="graphs">
+            <div class="card-block">
+                <div class="m-b-1">
+
+                    <h6>Grafico della temperatura</h6></div>
+                <div id="temperatura" class="dashboard-line chart" style="height:300px"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="card" id="graphs">
+            <div class="card-block">
+                <div class="m-b-1">
+
+                    <h6>Grafico dell'umidità</h6></div>
+                <div id="umidita" class="dashboard-line chart" style="height:300px"></div>
+            </div>
+        </div>
+    </div>
+    -->
+
 </div>
+
+
+
