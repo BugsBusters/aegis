@@ -96,7 +96,6 @@
                                 array('controller' => $this->role, 'action' => 'modificaprofilo')) ?>"><span
                                     class="font-icon glyphicon glyphicon-user"></span>Modifica
                                 Profilo</a>
-                            <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-cog"></span>Impostazioni</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?php echo $this->url(
                                 array('controller' => 'login', 'action' => 'logout')) ?>"><span
@@ -118,6 +117,7 @@
 <div class="mobile-menu-left-overlay"></div>
 <nav class="side-menu">
     <ul class="side-menu-list">
+        <?php if($this->ruolo == "user"):?>
         <li class="giulia-pink">
 	            <span>
 	                <i class="font-icon font-icon-dashboard"></i>
@@ -142,21 +142,16 @@
                 </span>
             </a>
         </li>
-
+        <?php elseif($this->ruolo == "admin"): ?>
         <!-- menu admin -->
-        <hr>
-        <li class="orange-red with-sub">
+
+        <li class="orange-red">
+            <a href="<?php echo $this->url(array("controller" => "admin", "action" => "elencouliveti")); ?>">
 	            <span>
 	                <i class="fa fa-pagelines"></i>
 	                <span class="lbl">Gestione Uliveti</span>
 	            </span>
-            <ul>
-                <li><a href="<?php echo $this->url(array("controller" => "admin", "action" => "elencouliveti")); ?>"><span class="lbl">Gestione uliveti</span></a></li>
-                <li>
-                    <a href="<?php echo $this->url(array("controller" => "admin", "action" => "gestioneappezzamenti")); ?>"><span
-                            class="lbl">Gestione appezzamenti</span></a></li>
-                <li><a href="<?php echo $this->url(array("controller" => "admin", "action" => "visualizzanodi")); ?>"><span class="lbl">Gestioni nodi</span></a></li>
-            </ul>
+            </a>
         </li>
 
 
@@ -172,7 +167,7 @@
                 <span class="lbl">Gestione malfunziamenti</span>
             </a>
         </li>
-
+        <?php endif; ?>
 
     </ul>
 </nav><!--.side-menu-->

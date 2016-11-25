@@ -42,6 +42,7 @@ class AdminController extends Zend_Controller_Action
 
         $this->view->modificaprofiloform = $this->getModificaProfiloForm();
         $this->_helper->layout->setLayout('layout');
+        $this->view->assign("ruolo",$this->user->ruolo);
     }
 
     public function indexAction()

@@ -24,7 +24,7 @@ class UserController extends Zend_Controller_Action
         $this->view->assign('role',$this->user->ruolo);
 
         $this->view->modificaprofiloform = $this->getModificaProfiloForm();
-
+        $this->view->assign("ruolo",$this->user->ruolo);
 
 
     }
