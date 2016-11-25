@@ -1,0 +1,29 @@
+<div class="container" align="center">
+    <h4>Aggiungi un' appezzamento</h4>
+    <?php echo $this->formappezzamenti ;?>
+</div>
+
+<hr>
+
+<div class="text-center">
+    <h4 class="">Elimina appezzamenti</h4>
+    <table class="table table-striped">
+
+        <tr class="bg-danger">
+            <th class="text-center">id uliveto</th>
+            <th class="text-center">id appezzamento</th>
+            <th class="text-center">nota</th>
+        </tr>
+
+        <tbody>
+        <?php foreach ($this->elencoappezzamenti as $appezz):?>
+            <?php foreach ($this->desculiveti as $desculiv):?>
+            <tr>
+                <td><?php echo $this->desculiveti[$appezz['iduliveto']];?></td>
+                <td><?php echo $appezz['idappezzamento']?></td>
+                <td><?php echo $appezz['note']?></td>
+            </tr>
+        <?php endforeach; endforeach;?>
+        </tbody>
+    </table>
+</div>
