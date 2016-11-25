@@ -19,7 +19,7 @@ class App_Controller_Plugin_Acl extends Zend_Controller_Plugin_Abstract
 
     public function preDispatch(Zend_Controller_Request_Abstract $request)
     {
-        echo $this->_role;
+        
         if (!$this->_acl->isAllowed($this->_role, $request->getControllerName())) {
             $this->_auth->clearIdentity();
             $this->denyAccess();

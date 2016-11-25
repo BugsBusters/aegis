@@ -286,31 +286,6 @@ class AdminController extends Zend_Controller_Action
         $this->view->assign('aggiungiform', $this->_ulivetoform);
     }
 
-    public function validateulivetoAction()
-    {
-        $request = $this->getRequest();
-        //istanzio la form di registrazione di un nuovo utente
-
-        if (!$request->isPost()) {
-            return $this->_helper->redirector('aggiungiuliveto');
-        }
-
-        $form = $this->_ulivetoform;
-
-        if (!$form->isValid($request->getPost())) {
-            $form->setDescription('Attenzione: alcuni dati inseriti sono errati.');
-            return $this->render('aggiungiuliveto');
-        } else {
-            $datiform = $this->_ulivetoform->getValues();
-
-            $ulivetomodel = new Application_Model_UlivetoModel();
-
-            $ulivetomodel->inserisciuliveto($datiform);
-            $this->getHelper('Redirector')->gotoSimple('elencouliveti', 'admin', $module = null);
-        }
-
-    }
-
     public function eliminaulivetoAction()
     {
         $id = $this->getParam('id');
