@@ -76,7 +76,7 @@ class Application_Form_Modificaprofilo extends App_Form_Abstract
 
         //include_once ('Lingua.php');
 
-        public function populate($dati)
+        public function popolaForm($dati)
     {
         $this->nome->setValue($dati['nome']);
         $this->cognome->setValue($dati['cognome']);

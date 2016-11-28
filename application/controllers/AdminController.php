@@ -137,7 +137,7 @@ class AdminController extends Zend_Controller_Action
         $form = $this->modificaprofiloform;
         $usermodel=new Application_Model_UtenteModel();
         $dati=$usermodel->getUserByUser($this->user->username)->toArray();
-        $form->populate($dati[0]);
+        $form->popolaForm($dati[0]);
 
         $urlHelper = $this->_helper->getHelper('url');
 
