@@ -14,14 +14,14 @@
 
 
     <title>Aegis</title>
-    <link rel="shortcut icon" href="<?php echo $this->baseUrl("publiczone/images/favicon.ico");?> type="image/x-icon"">
-    <link rel="icon" href="<?php echo $this->baseUrl("publiczone/images/favicon.ico");?> type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo $this->baseUrl("publiczone/images/favicon.ico");?>" type="image/x-icon"">
+    <link rel="icon" href="<?php echo $this->baseUrl("publiczone/images/favicon.ico");?>" type="image/x-icon">
 
     <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl("publiczone/css/bootstrap.css");?>">
     <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl("publiczone/css/style.css");?>">
 
     <!--[if lt IE 9]>
-    <script src="<?php echo $this->baseUrl("publiczone/bootstrap/js/html5shiv.min.js") ;?>"></script>
+    <script src="<?php echo $this->baseUrl("publiczone/bootstrap/js/html5shiv.min.js");?>"></script>
     <script src="<?php echo $this->baseUrl("publiczone/bootstrap/js/respond.min.js") ;?>"></script>
 
     <![endif]-->
@@ -81,7 +81,7 @@
                     <li class="onepage active"><a href="#home">Home</a></li>
                     <li class="onepage"><a href="#products">Prodotti</a></li>
                     <li class="onepage"><a href="#contatti">Contattaci</a></li>
-                    <li class="onepage"><a href="<?php echo $this->url(array('controller' => 'login', 'action' => 'index'),null,true); ?>"><b>Login</b></a></li>
+                    <li><a href="<?php echo $this->url(array('controller' => 'login', 'action' => 'index'),null,true); ?>"><b>Login</b></a></li>
                 </ul>
             </div>
         </nav>
