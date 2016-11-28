@@ -28,7 +28,8 @@
 <header class="site-header">
     <div class="container-fluid">
 
-        <a href="#" class="site-logo">
+        <a href="<?php echo $this->url(
+            array('controller' => $this->role, 'action' => 'index'),null,true) ?>" class="site-logo">
             <img class="hidden-md-down" src="<?php echo $this->baseUrl("img/logo-2.png"); ?>" alt="">
             <img class="hidden-lg-up" src="<?php echo $this->baseUrl("img/logo-2-mob.png"); ?>" alt="">
         </a>
@@ -72,7 +73,8 @@
 
                             </div>
                             <div class="dropdown-menu-notif-more">
-                                <a href="#">See more</a>
+                                <a href="<?php echo $this->url(
+                                    array('controller' => $this->role, 'action' => 'notifiche'),null,true) ?>">See more</a>
                             </div>
                         </div>
                     </div>

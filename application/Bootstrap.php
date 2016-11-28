@@ -53,7 +53,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             'host' => 'localhost',
             'username' => 'root',
             'password' => '',
-            'dbname' => 'my_aegis'
+            'dbname' => 'my_aegis',
+            'charset' => 'utf8'
         ));
         Zend_Db_Table_Abstract::setDefaultAdapter($db);
     }
